@@ -1,0 +1,40 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Cap,Inter Display Black,92,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,0,0,1,9,4,5,60,60,0,1
+Style: Badge,Inter Display Black,150,&H003FD2FF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,0,0,1,12,6,5,40,40,0,1
+Style: Small,Inter Display ExtraBold,58,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,0,0,1,6,3,5,40,40,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.40,0:00:00.96,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}WHAT IF YOU
+Dialogue: 0,0:00:00.96,0:00:01.66,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}DROPPED A {\c&H3FD2FF&}PENNY{\c&HFFFFFF&}
+Dialogue: 0,0:00:01.66,0:00:02.26,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}FROM THE TOP
+Dialogue: 0,0:00:02.26,0:00:03.54,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}OF A {\c&H3FD2FF&}SKYSCRAPER?{\c&HFFFFFF&}
+Dialogue: 0,0:00:03.65,0:00:04.38,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}MOST PEOPLE THINK
+Dialogue: 0,0:00:04.38,0:00:04.94,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}IT WOULD HIT
+Dialogue: 0,0:00:04.94,0:00:05.60,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THE GROUND LIKE
+Dialogue: 0,0:00:05.60,0:00:06.54,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}A {\c&H3FD2FF&}BULLET.{\c&HFFFFFF&}
+Dialogue: 0,0:00:08.25,0:00:08.85,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}BUT A {\c&H3FD2FF&}PENNY{\c&HFFFFFF&}
+Dialogue: 0,0:00:08.85,0:00:09.45,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}IS {\c&H3FD2FF&}FLAT{\c&HFFFFFF&} AND
+Dialogue: 0,0:00:09.45,0:00:09.97,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H3FD2FF&}LIGHT,{\c&HFFFFFF&}
+Dialogue: 0,0:00:09.97,0:00:10.53,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}SO THE AIR
+Dialogue: 0,0:00:10.53,0:00:11.30,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}CATCHES IT,
+Dialogue: 0,0:00:11.30,0:00:11.98,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}AND IT STARTS
+Dialogue: 0,0:00:11.98,0:00:12.58,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}TO {\c&H3FD2FF&}FLIP{\c&HFFFFFF&} AND
+Dialogue: 0,0:00:12.58,0:00:13.53,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H3FD2FF&}FLUTTER.{\c&HFFFFFF&}
+Dialogue: 0,0:00:14.75,0:00:15.45,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}IT TOPS OUT
+Dialogue: 0,0:00:15.45,0:00:16.35,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}AT AROUND {\c&H3FD2FF&}FORTY{\c&HFFFFFF&}
+Dialogue: 0,0:00:16.35,0:00:18.06,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H3FD2FF&}KILOMETERS{\c&HFFFFFF&} PER HOUR.
+Dialogue: 0,0:00:19.35,0:00:19.77,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}SO IF IT
+Dialogue: 0,0:00:19.77,0:00:20.33,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}HIT YOU…
+Dialogue: 0,0:00:20.33,0:00:20.92,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}IT WOULD JUST
+Dialogue: 0,0:00:20.92,0:00:21.38,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H3FD2FF&}STING.{\c&HFFFFFF&}
+Dialogue: 0,0:00:21.38,0:00:22.32,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}A LITTLE.
+Dialogue: 1,0:00:15.20,0:00:18.90,Badge,,0,0,0,,{\pos(540,420)\fscx40\fscy40\t(0,140,\fscx110\fscy110)\t(140,240,\fscx100\fscy100)}≈ 40 KM/H
+Dialogue: 1,0:00:15.45,0:00:18.90,Small,,0,0,0,,{\pos(540,560)\alpha&HFF&\t(0,200,\alpha&H00&)}TERMINAL VELOCITY

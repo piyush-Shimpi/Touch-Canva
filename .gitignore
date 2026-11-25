@@ -1,0 +1,10 @@
+# render intermediates
+shorts/*/frames/
+shorts/*/build/prev/
+shorts/*/build/*.blend
+shorts/*/build/*.blend1
+shorts/*/build/*.png
+shorts/*/build/*.log
+shorts/*/audio/vo_*.wav
+__pycache__/
+shorts/*/audio/mix.wav
