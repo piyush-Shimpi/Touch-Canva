@@ -8,3 +8,7 @@ shorts/*/build/*.log
 shorts/*/audio/vo_*.wav
 __pycache__/
 shorts/*/audio/mix.wav
+shorts/*/assets/*.fbx
+shorts/*/assets/textures/
+shorts/*/assets/*.geojson
+shorts/*/build/*.png
