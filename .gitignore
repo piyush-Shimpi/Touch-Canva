@@ -14,3 +14,6 @@ shorts/*/assets/*.geojson
 shorts/*/build/*.png
 shorts/zombie-survival/frames/
 shorts/zombie-survival/build/prev/
+shorts/zombie-survival/audio/*.wav
+shorts/zombie-survival/build/*.blend*
+shorts/zombie-survival/build/*.log
