@@ -470,6 +470,10 @@ for f in range(1, S5[1] + 2):
 for f, h in ((1, True), (S4[0] + 54, False), (S5[1] + 1, True)):
     line.hide_render = h
     line.keyframe_insert("hide_render", frame=f)
+# vessels are behind the camera from S5 on; leaving them in makes Cycles stall at frame 451
+for f, h in ((1, False), (S5[0], True)):
+    vessels.hide_render = h
+    vessels.keyframe_insert("hide_render", frame=f)
 
 # trees along the run (linked duplicates)
 leaf, _ = principled("Leaf", "#2f6b2a", 0.8)
