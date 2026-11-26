@@ -8,105 +8,103 @@ WrapStyle: 2
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Cap,Inter Display Black,92,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,0,0,1,9,4,5,60,60,0,1
 Style: Badge,Inter Display Black,150,&H003FD2FF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,0,0,1,12,6,5,40,40,0,1
+Style: Top,Inter Display Black,138,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,2,0,1,11,5,5,40,40,0,1
 Style: Small,Inter Display ExtraBold,58,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,0,0,1,6,3,5,40,40,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,0:00:00.45,0:00:01.07,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}YOUR BODY IS
-Dialogue: 0,0:00:01.07,0:00:01.87,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}PACKED WITH {\c&H3FD2FF&}BLOOD{\c&HFFFFFF&}
-Dialogue: 0,0:00:01.87,0:00:02.80,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}VESSELS.
-Dialogue: 0,0:00:04.35,0:00:05.43,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}NOW IMAGINE PULLING
-Dialogue: 0,0:00:05.43,0:00:06.37,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H3FD2FF&}EVERY{\c&HFFFFFF&} SINGLE {\c&H3FD2FF&}ONE{\c&HFFFFFF&}
-Dialogue: 0,0:00:06.37,0:00:07.71,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}OF THEM OUT…
-Dialogue: 0,0:00:11.55,0:00:12.34,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}AND LAYING THEM
-Dialogue: 0,0:00:12.34,0:00:12.97,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}IN {\c&H3FD2FF&}ONE{\c&HFFFFFF&} LONG
-Dialogue: 0,0:00:12.97,0:00:13.82,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}LINE.
-Dialogue: 0,0:00:15.25,0:00:16.16,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}IT WOULD STRETCH
-Dialogue: 0,0:00:16.16,0:00:16.93,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}FOR ABOUT {\c&H3FD2FF&}ONE{\c&HFFFFFF&}
-Dialogue: 0,0:00:16.93,0:00:17.79,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H3FD2FF&}HUNDRED{\c&HFFFFFF&} {\c&H3FD2FF&}THOUSAND{\c&HFFFFFF&}
-Dialogue: 0,0:00:17.79,0:00:18.95,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}KILOMETERS.
-Dialogue: 0,0:00:20.45,0:00:21.18,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THAT IS ENOUGH
-Dialogue: 0,0:00:21.18,0:00:21.90,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}TO WRAP AROUND
-Dialogue: 0,0:00:21.90,0:00:23.30,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THE ENTIRE EARTH…
-Dialogue: 0,0:00:25.05,0:00:25.98,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}ALMOST {\c&H3FD2FF&}TWO{\c&HFFFFFF&} AND
-Dialogue: 0,0:00:25.98,0:00:27.15,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}A {\c&H3FD2FF&}HALF{\c&HFFFFFF&} TIMES!
-Dialogue: 1,0:00:15.03,0:00:15.10,Badge,,0,0,0,,{\pos(540,420)\fs120}0.01 KM
-Dialogue: 1,0:00:15.10,0:00:15.17,Badge,,0,0,0,,{\pos(540,420)\fs120}0.01 KM
-Dialogue: 1,0:00:15.17,0:00:15.23,Badge,,0,0,0,,{\pos(540,420)\fs120}0.01 KM
-Dialogue: 1,0:00:15.23,0:00:15.30,Badge,,0,0,0,,{\pos(540,420)\fs120}0.01 KM
-Dialogue: 1,0:00:15.30,0:00:15.37,Badge,,0,0,0,,{\pos(540,420)\fs120}0.02 KM
-Dialogue: 1,0:00:15.37,0:00:15.43,Badge,,0,0,0,,{\pos(540,420)\fs120}0.02 KM
-Dialogue: 1,0:00:15.43,0:00:15.50,Badge,,0,0,0,,{\pos(540,420)\fs120}0.02 KM
-Dialogue: 1,0:00:15.50,0:00:15.57,Badge,,0,0,0,,{\pos(540,420)\fs120}0.02 KM
-Dialogue: 1,0:00:15.57,0:00:15.63,Badge,,0,0,0,,{\pos(540,420)\fs120}0.03 KM
-Dialogue: 1,0:00:15.63,0:00:15.70,Badge,,0,0,0,,{\pos(540,420)\fs120}0.03 KM
-Dialogue: 1,0:00:15.70,0:00:15.77,Badge,,0,0,0,,{\pos(540,420)\fs120}0.04 KM
-Dialogue: 1,0:00:15.77,0:00:15.83,Badge,,0,0,0,,{\pos(540,420)\fs120}0.04 KM
-Dialogue: 1,0:00:15.83,0:00:15.90,Badge,,0,0,0,,{\pos(540,420)\fs120}0.05 KM
-Dialogue: 1,0:00:15.90,0:00:15.97,Badge,,0,0,0,,{\pos(540,420)\fs120}0.06 KM
-Dialogue: 1,0:00:15.97,0:00:16.03,Badge,,0,0,0,,{\pos(540,420)\fs120}0.07 KM
-Dialogue: 1,0:00:16.03,0:00:16.10,Badge,,0,0,0,,{\pos(540,420)\fs120}0.09 KM
-Dialogue: 1,0:00:16.10,0:00:16.17,Badge,,0,0,0,,{\pos(540,420)\fs120}0.11 KM
-Dialogue: 1,0:00:16.17,0:00:16.23,Badge,,0,0,0,,{\pos(540,420)\fs120}0.13 KM
-Dialogue: 1,0:00:16.23,0:00:16.30,Badge,,0,0,0,,{\pos(540,420)\fs120}0.15 KM
-Dialogue: 1,0:00:16.30,0:00:16.37,Badge,,0,0,0,,{\pos(540,420)\fs120}0.19 KM
-Dialogue: 1,0:00:16.37,0:00:16.43,Badge,,0,0,0,,{\pos(540,420)\fs120}0.23 KM
-Dialogue: 1,0:00:16.43,0:00:16.50,Badge,,0,0,0,,{\pos(540,420)\fs120}0.27 KM
-Dialogue: 1,0:00:16.50,0:00:16.57,Badge,,0,0,0,,{\pos(540,420)\fs120}0.33 KM
-Dialogue: 1,0:00:16.57,0:00:16.63,Badge,,0,0,0,,{\pos(540,420)\fs120}0.41 KM
-Dialogue: 1,0:00:16.63,0:00:16.70,Badge,,0,0,0,,{\pos(540,420)\fs120}0.50 KM
-Dialogue: 1,0:00:16.70,0:00:16.77,Badge,,0,0,0,,{\pos(540,420)\fs120}0.61 KM
-Dialogue: 1,0:00:16.77,0:00:16.83,Badge,,0,0,0,,{\pos(540,420)\fs120}0.75 KM
-Dialogue: 1,0:00:16.83,0:00:16.90,Badge,,0,0,0,,{\pos(540,420)\fs120}0.93 KM
-Dialogue: 1,0:00:16.90,0:00:16.97,Badge,,0,0,0,,{\pos(540,420)\fs120}1.15 KM
-Dialogue: 1,0:00:16.97,0:00:17.03,Badge,,0,0,0,,{\pos(540,420)\fs120}1.42 KM
-Dialogue: 1,0:00:17.03,0:00:17.10,Badge,,0,0,0,,{\pos(540,420)\fs120}1.76 KM
-Dialogue: 1,0:00:17.10,0:00:17.17,Badge,,0,0,0,,{\pos(540,420)\fs120}2.18 KM
-Dialogue: 1,0:00:17.17,0:00:17.23,Badge,,0,0,0,,{\pos(540,420)\fs120}2.72 KM
-Dialogue: 1,0:00:17.23,0:00:17.30,Badge,,0,0,0,,{\pos(540,420)\fs120}3.39 KM
-Dialogue: 1,0:00:17.30,0:00:17.37,Badge,,0,0,0,,{\pos(540,420)\fs120}4.22 KM
-Dialogue: 1,0:00:17.37,0:00:17.43,Badge,,0,0,0,,{\pos(540,420)\fs120}5.28 KM
-Dialogue: 1,0:00:17.43,0:00:17.50,Badge,,0,0,0,,{\pos(540,420)\fs120}6.61 KM
-Dialogue: 1,0:00:17.50,0:00:17.57,Badge,,0,0,0,,{\pos(540,420)\fs120}8.29 KM
-Dialogue: 1,0:00:17.57,0:00:17.63,Badge,,0,0,0,,{\pos(540,420)\fs120}10 KM
-Dialogue: 1,0:00:17.63,0:00:17.70,Badge,,0,0,0,,{\pos(540,420)\fs120}13 KM
-Dialogue: 1,0:00:17.70,0:00:17.77,Badge,,0,0,0,,{\pos(540,420)\fs120}16 KM
-Dialogue: 1,0:00:17.77,0:00:17.83,Badge,,0,0,0,,{\pos(540,420)\fs120}21 KM
-Dialogue: 1,0:00:17.83,0:00:17.90,Badge,,0,0,0,,{\pos(540,420)\fs120}26 KM
-Dialogue: 1,0:00:17.90,0:00:17.97,Badge,,0,0,0,,{\pos(540,420)\fs120}33 KM
-Dialogue: 1,0:00:17.97,0:00:18.03,Badge,,0,0,0,,{\pos(540,420)\fs120}42 KM
-Dialogue: 1,0:00:18.03,0:00:18.10,Badge,,0,0,0,,{\pos(540,420)\fs120}53 KM
-Dialogue: 1,0:00:18.10,0:00:18.17,Badge,,0,0,0,,{\pos(540,420)\fs120}68 KM
-Dialogue: 1,0:00:18.17,0:00:18.23,Badge,,0,0,0,,{\pos(540,420)\fs120}86 KM
-Dialogue: 1,0:00:18.23,0:00:18.30,Badge,,0,0,0,,{\pos(540,420)\fs120}110 KM
-Dialogue: 1,0:00:18.30,0:00:18.37,Badge,,0,0,0,,{\pos(540,420)\fs120}140 KM
-Dialogue: 1,0:00:18.37,0:00:18.43,Badge,,0,0,0,,{\pos(540,420)\fs120}179 KM
-Dialogue: 1,0:00:18.43,0:00:18.50,Badge,,0,0,0,,{\pos(540,420)\fs120}228 KM
-Dialogue: 1,0:00:18.50,0:00:18.57,Badge,,0,0,0,,{\pos(540,420)\fs120}292 KM
-Dialogue: 1,0:00:18.57,0:00:18.63,Badge,,0,0,0,,{\pos(540,420)\fs120}375 KM
-Dialogue: 1,0:00:18.63,0:00:18.70,Badge,,0,0,0,,{\pos(540,420)\fs120}480 KM
-Dialogue: 1,0:00:18.70,0:00:18.77,Badge,,0,0,0,,{\pos(540,420)\fs120}617 KM
-Dialogue: 1,0:00:18.77,0:00:18.83,Badge,,0,0,0,,{\pos(540,420)\fs120}793 KM
-Dialogue: 1,0:00:18.83,0:00:18.90,Badge,,0,0,0,,{\pos(540,420)\fs120}1,021 KM
-Dialogue: 1,0:00:18.90,0:00:18.97,Badge,,0,0,0,,{\pos(540,420)\fs120}1,315 KM
-Dialogue: 1,0:00:18.97,0:00:19.03,Badge,,0,0,0,,{\pos(540,420)\fs120}1,697 KM
-Dialogue: 1,0:00:19.03,0:00:19.10,Badge,,0,0,0,,{\pos(540,420)\fs120}2,191 KM
-Dialogue: 1,0:00:19.10,0:00:19.17,Badge,,0,0,0,,{\pos(540,420)\fs120}2,832 KM
-Dialogue: 1,0:00:19.17,0:00:19.23,Badge,,0,0,0,,{\pos(540,420)\fs120}3,665 KM
-Dialogue: 1,0:00:19.23,0:00:19.30,Badge,,0,0,0,,{\pos(540,420)\fs120}4,748 KM
-Dialogue: 1,0:00:19.30,0:00:19.37,Badge,,0,0,0,,{\pos(540,420)\fs120}6,156 KM
-Dialogue: 1,0:00:19.37,0:00:19.43,Badge,,0,0,0,,{\pos(540,420)\fs120}7,991 KM
-Dialogue: 1,0:00:19.43,0:00:19.50,Badge,,0,0,0,,{\pos(540,420)\fs120}10,383 KM
-Dialogue: 1,0:00:19.50,0:00:19.57,Badge,,0,0,0,,{\pos(540,420)\fs120}13,505 KM
-Dialogue: 1,0:00:19.57,0:00:19.63,Badge,,0,0,0,,{\pos(540,420)\fs120}17,583 KM
-Dialogue: 1,0:00:19.63,0:00:19.70,Badge,,0,0,0,,{\pos(540,420)\fs120}22,914 KM
-Dialogue: 1,0:00:19.70,0:00:19.77,Badge,,0,0,0,,{\pos(540,420)\fs120}29,890 KM
-Dialogue: 1,0:00:19.77,0:00:19.83,Badge,,0,0,0,,{\pos(540,420)\fs120}39,027 KM
-Dialogue: 1,0:00:19.83,0:00:19.90,Badge,,0,0,0,,{\pos(540,420)\fs120}51,006 KM
-Dialogue: 1,0:00:19.90,0:00:19.97,Badge,,0,0,0,,{\pos(540,420)\fs120}100,000 KM
-Dialogue: 1,0:00:19.97,0:00:21.60,Badge,,0,0,0,,{\pos(540,420)\fs120}100,000 KM
-Dialogue: 1,0:00:20.00,0:00:21.60,Small,,0,0,0,,{\pos(540,540)}OF BLOOD VESSELS
-Dialogue: 1,0:00:23.56,0:00:25.51,Badge,,0,0,0,,{\pos(540,330)\fscx40\fscy40\t(0,140,\fscx115\fscy115)\t(140,240,\fscx100\fscy100)}×1
-Dialogue: 1,0:00:25.51,0:00:26.70,Badge,,0,0,0,,{\pos(540,330)\fscx40\fscy40\t(0,140,\fscx115\fscy115)\t(140,240,\fscx100\fscy100)}×2
-Dialogue: 1,0:00:26.70,0:00:28.00,Badge,,0,0,0,,{\pos(540,330)\fscx40\fscy40\t(0,140,\fscx115\fscy115)\t(140,240,\fscx100\fscy100)}×2.5
-Dialogue: 1,0:00:26.80,0:00:28.00,Small,,0,0,0,,{\pos(540,470)\alpha&HFF&\t(0,250,\alpha&H00&)}AROUND THE EARTH
+Dialogue: 0,0:00:00.75,0:00:01.39,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}IF YOU {\c&H3FD2FF&}SLICE{\c&HFFFFFF&}
+Dialogue: 0,0:00:01.39,0:00:02.08,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}INTO ANY PART
+Dialogue: 0,0:00:02.08,0:00:02.96,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}OF YOUR BODY,
+Dialogue: 0,0:00:02.96,0:00:03.69,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}YOU'LL SEE TINY
+Dialogue: 0,0:00:03.69,0:00:04.73,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H3FD2FF&}BLOOD{\c&HFFFFFF&} VESSELS.
+Dialogue: 0,0:00:04.80,0:00:05.87,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}NOW IMAGINE STRETCHING
+Dialogue: 0,0:00:05.87,0:00:06.70,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H3FD2FF&}EVERY{\c&HFFFFFF&} SINGLE ONE
+Dialogue: 0,0:00:06.70,0:00:07.68,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}END TO END.
+Dialogue: 0,0:00:07.75,0:00:08.36,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}LAID OUT IN
+Dialogue: 0,0:00:08.36,0:00:09.05,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}ONE LINE,
+Dialogue: 0,0:00:09.05,0:00:09.90,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THEY'D RACE ACROSS
+Dialogue: 0,0:00:09.90,0:00:10.51,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THE LAND
+Dialogue: 0,0:00:10.58,0:00:11.32,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}FOR ABOUT ONE
+Dialogue: 0,0:00:11.32,0:00:12.14,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H3FD2FF&}HUNDRED{\c&HFFFFFF&} {\c&H3FD2FF&}THOUSAND{\c&HFFFFFF&}
+Dialogue: 0,0:00:12.14,0:00:12.82,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}KILOMETERS!
+Dialogue: 0,0:00:12.89,0:00:13.59,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THAT'S ENOUGH TO
+Dialogue: 0,0:00:13.59,0:00:14.29,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}WRAP AROUND THE
+Dialogue: 0,0:00:14.29,0:00:15.00,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}ENTIRE {\c&H3FD2FF&}EARTH{\c&HFFFFFF&}
+Dialogue: 0,0:00:15.07,0:00:15.58,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H3FD2FF&}TWO{\c&HFFFFFF&} AND A
+Dialogue: 0,0:00:15.58,0:00:16.25,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H3FD2FF&}HALF{\c&HFFFFFF&} TIMES!
+Dialogue: 0,0:00:16.32,0:00:16.96,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}AND YOUR {\c&H3FD2FF&}HEART{\c&HFFFFFF&}
+Dialogue: 0,0:00:16.96,0:00:17.82,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}PUSHES {\c&H3FD2FF&}BLOOD{\c&HFFFFFF&} THROUGH
+Dialogue: 0,0:00:17.82,0:00:18.46,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H3FD2FF&}EVERY{\c&HFFFFFF&} LAST ONE
+Dialogue: 0,0:00:18.46,0:00:19.03,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}OF THEM,
+Dialogue: 0,0:00:19.03,0:00:20.12,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}AROUND THE CLOCK.
+Dialogue: 0,0:00:20.19,0:00:21.20,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}ALL PACKED INSIDE…
+Dialogue: 0,0:00:21.20,0:00:21.77,Cap,,0,0,0,,{\pos(540,1330)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}YOU.
+Dialogue: 2,0:00:00.00,0:00:00.73,Top,,0,0,0,,{\pos(540,330)}{\fscx60\fscy60\t(0,110,\fscx110\fscy110)\t(110,190,\fscx100\fscy100)}INSIDE {\c&H3FD2FF&}YOU
+Dialogue: 2,0:00:04.67,0:00:07.63,Top,,0,0,0,,{\pos(540,330)}{\fscx60\fscy60\t(0,110,\fscx110\fscy110)\t(110,190,\fscx100\fscy100)}HOW {\c&H3FD2FF&}LONG?
+Dialogue: 1,0:00:08.67,0:00:08.73,Badge,,0,0,0,,{\pos(540,420)\fs120}0.01 KM
+Dialogue: 1,0:00:08.73,0:00:08.80,Badge,,0,0,0,,{\pos(540,420)\fs120}0.01 KM
+Dialogue: 1,0:00:08.80,0:00:08.87,Badge,,0,0,0,,{\pos(540,420)\fs120}0.01 KM
+Dialogue: 1,0:00:08.87,0:00:08.93,Badge,,0,0,0,,{\pos(540,420)\fs120}0.01 KM
+Dialogue: 1,0:00:08.93,0:00:09.00,Badge,,0,0,0,,{\pos(540,420)\fs120}0.02 KM
+Dialogue: 1,0:00:09.00,0:00:09.07,Badge,,0,0,0,,{\pos(540,420)\fs120}0.02 KM
+Dialogue: 1,0:00:09.07,0:00:09.13,Badge,,0,0,0,,{\pos(540,420)\fs120}0.02 KM
+Dialogue: 1,0:00:09.13,0:00:09.20,Badge,,0,0,0,,{\pos(540,420)\fs120}0.03 KM
+Dialogue: 1,0:00:09.20,0:00:09.27,Badge,,0,0,0,,{\pos(540,420)\fs120}0.04 KM
+Dialogue: 1,0:00:09.27,0:00:09.33,Badge,,0,0,0,,{\pos(540,420)\fs120}0.04 KM
+Dialogue: 1,0:00:09.33,0:00:09.40,Badge,,0,0,0,,{\pos(540,420)\fs120}0.05 KM
+Dialogue: 1,0:00:09.40,0:00:09.47,Badge,,0,0,0,,{\pos(540,420)\fs120}0.07 KM
+Dialogue: 1,0:00:09.47,0:00:09.53,Badge,,0,0,0,,{\pos(540,420)\fs120}0.08 KM
+Dialogue: 1,0:00:09.53,0:00:09.60,Badge,,0,0,0,,{\pos(540,420)\fs120}0.10 KM
+Dialogue: 1,0:00:09.60,0:00:09.67,Badge,,0,0,0,,{\pos(540,420)\fs120}0.13 KM
+Dialogue: 1,0:00:09.67,0:00:09.73,Badge,,0,0,0,,{\pos(540,420)\fs120}0.16 KM
+Dialogue: 1,0:00:09.73,0:00:09.80,Badge,,0,0,0,,{\pos(540,420)\fs120}0.21 KM
+Dialogue: 1,0:00:09.80,0:00:09.87,Badge,,0,0,0,,{\pos(540,420)\fs120}0.26 KM
+Dialogue: 1,0:00:09.87,0:00:09.93,Badge,,0,0,0,,{\pos(540,420)\fs120}0.33 KM
+Dialogue: 1,0:00:09.93,0:00:10.00,Badge,,0,0,0,,{\pos(540,420)\fs120}0.43 KM
+Dialogue: 1,0:00:10.00,0:00:10.07,Badge,,0,0,0,,{\pos(540,420)\fs120}0.55 KM
+Dialogue: 1,0:00:10.07,0:00:10.13,Badge,,0,0,0,,{\pos(540,420)\fs120}0.70 KM
+Dialogue: 1,0:00:10.13,0:00:10.20,Badge,,0,0,0,,{\pos(540,420)\fs120}0.90 KM
+Dialogue: 1,0:00:10.20,0:00:10.27,Badge,,0,0,0,,{\pos(540,420)\fs120}1.17 KM
+Dialogue: 1,0:00:10.27,0:00:10.33,Badge,,0,0,0,,{\pos(540,420)\fs120}1.52 KM
+Dialogue: 1,0:00:10.33,0:00:10.40,Badge,,0,0,0,,{\pos(540,420)\fs120}1.97 KM
+Dialogue: 1,0:00:10.40,0:00:10.47,Badge,,0,0,0,,{\pos(540,420)\fs120}2.57 KM
+Dialogue: 1,0:00:10.47,0:00:10.53,Badge,,0,0,0,,{\pos(540,420)\fs120}3.37 KM
+Dialogue: 1,0:00:10.53,0:00:10.60,Badge,,0,0,0,,{\pos(540,420)\fs120}4.41 KM
+Dialogue: 1,0:00:10.60,0:00:10.67,Badge,,0,0,0,,{\pos(540,420)\fs120}5.80 KM
+Dialogue: 1,0:00:10.67,0:00:10.73,Badge,,0,0,0,,{\pos(540,420)\fs120}7.64 KM
+Dialogue: 1,0:00:10.73,0:00:10.80,Badge,,0,0,0,,{\pos(540,420)\fs120}10 KM
+Dialogue: 1,0:00:10.80,0:00:10.87,Badge,,0,0,0,,{\pos(540,420)\fs120}13 KM
+Dialogue: 1,0:00:10.87,0:00:10.93,Badge,,0,0,0,,{\pos(540,420)\fs120}18 KM
+Dialogue: 1,0:00:10.93,0:00:11.00,Badge,,0,0,0,,{\pos(540,420)\fs120}24 KM
+Dialogue: 1,0:00:11.00,0:00:11.07,Badge,,0,0,0,,{\pos(540,420)\fs120}31 KM
+Dialogue: 1,0:00:11.07,0:00:11.13,Badge,,0,0,0,,{\pos(540,420)\fs120}42 KM
+Dialogue: 1,0:00:11.13,0:00:11.20,Badge,,0,0,0,,{\pos(540,420)\fs120}56 KM
+Dialogue: 1,0:00:11.20,0:00:11.27,Badge,,0,0,0,,{\pos(540,420)\fs120}75 KM
+Dialogue: 1,0:00:11.27,0:00:11.33,Badge,,0,0,0,,{\pos(540,420)\fs120}100 KM
+Dialogue: 1,0:00:11.33,0:00:11.40,Badge,,0,0,0,,{\pos(540,420)\fs120}135 KM
+Dialogue: 1,0:00:11.40,0:00:11.47,Badge,,0,0,0,,{\pos(540,420)\fs120}182 KM
+Dialogue: 1,0:00:11.47,0:00:11.53,Badge,,0,0,0,,{\pos(540,420)\fs120}246 KM
+Dialogue: 1,0:00:11.53,0:00:11.60,Badge,,0,0,0,,{\pos(540,420)\fs120}332 KM
+Dialogue: 1,0:00:11.60,0:00:11.67,Badge,,0,0,0,,{\pos(540,420)\fs120}450 KM
+Dialogue: 1,0:00:11.67,0:00:11.73,Badge,,0,0,0,,{\pos(540,420)\fs120}611 KM
+Dialogue: 1,0:00:11.73,0:00:11.80,Badge,,0,0,0,,{\pos(540,420)\fs120}830 KM
+Dialogue: 1,0:00:11.80,0:00:11.87,Badge,,0,0,0,,{\pos(540,420)\fs120}1,130 KM
+Dialogue: 1,0:00:11.87,0:00:11.93,Badge,,0,0,0,,{\pos(540,420)\fs120}1,541 KM
+Dialogue: 1,0:00:11.93,0:00:12.00,Badge,,0,0,0,,{\pos(540,420)\fs120}2,105 KM
+Dialogue: 1,0:00:12.00,0:00:12.07,Badge,,0,0,0,,{\pos(540,420)\fs120}2,880 KM
+Dialogue: 1,0:00:12.07,0:00:12.13,Badge,,0,0,0,,{\pos(540,420)\fs120}3,947 KM
+Dialogue: 1,0:00:12.13,0:00:12.20,Badge,,0,0,0,,{\pos(540,420)\fs120}5,417 KM
+Dialogue: 1,0:00:12.20,0:00:12.27,Badge,,0,0,0,,{\pos(540,420)\fs120}7,446 KM
+Dialogue: 1,0:00:12.27,0:00:12.33,Badge,,0,0,0,,{\pos(540,420)\fs120}10,250 KM
+Dialogue: 1,0:00:12.33,0:00:12.40,Badge,,0,0,0,,{\pos(540,420)\fs120}14,132 KM
+Dialogue: 1,0:00:12.40,0:00:12.47,Badge,,0,0,0,,{\pos(540,420)\fs120}19,512 KM
+Dialogue: 1,0:00:12.47,0:00:12.53,Badge,,0,0,0,,{\pos(540,420)\fs120}26,978 KM
+Dialogue: 1,0:00:12.53,0:00:12.60,Badge,,0,0,0,,{\pos(540,420)\fs120}37,355 KM
+Dialogue: 1,0:00:12.60,0:00:12.67,Badge,,0,0,0,,{\pos(540,420)\fs120}51,796 KM
+Dialogue: 1,0:00:12.67,0:00:12.73,Badge,,0,0,0,,{\pos(540,420)\fs120}100,000 KM
+Dialogue: 1,0:00:12.73,0:00:12.77,Badge,,0,0,0,,{\pos(540,420)\fs120}100,000 KM
+Dialogue: 1,0:00:14.26,0:00:15.34,Badge,,0,0,0,,{\pos(540,330)\fscx40\fscy40\t(0,140,\fscx115\fscy115)\t(140,240,\fscx100\fscy100)}×1
+Dialogue: 1,0:00:15.34,0:00:16.00,Badge,,0,0,0,,{\pos(540,330)\fscx40\fscy40\t(0,140,\fscx115\fscy115)\t(140,240,\fscx100\fscy100)}×2
+Dialogue: 1,0:00:16.00,0:00:20.17,Badge,,0,0,0,,{\pos(540,330)\fscx40\fscy40\t(0,140,\fscx115\fscy115)\t(140,240,\fscx100\fscy100)}×2.5
+Dialogue: 1,0:00:16.10,0:00:20.17,Small,,0,0,0,,{\pos(540,470)\alpha&HFF&\t(0,250,\alpha&H00&)}AROUND THE EARTH

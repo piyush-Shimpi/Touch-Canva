@@ -1,32 +1,42 @@
 [
  {
   "i": 0,
-  "text": "Your body is packed with blood vessels.",
-  "dur": 2.15
+  "text": "If you slice into any part of your body, you'll see tiny blood vessels.",
+  "dur": 3.971
  },
  {
   "i": 1,
-  "text": "Now imagine pulling every single one of them out...",
-  "dur": 3.16
+  "text": "Now imagine stretching every single one end to end.",
+  "dur": 2.868
  },
  {
   "i": 2,
-  "text": "and laying them in one long line.",
-  "dur": 2.07
+  "text": "Laid out in one line, they'd race across the land",
+  "dur": 2.752
  },
  {
   "i": 3,
-  "text": "It would stretch for about one hundred thousand kilometers.",
-  "dur": 3.5
+  "text": "for about one hundred thousand kilometers!",
+  "dur": 2.232
  },
  {
   "i": 4,
-  "text": "That is enough to wrap around the entire Earth...",
-  "dur": 2.65
+  "text": "That's enough to wrap around the entire Earth",
+  "dur": 2.1
  },
  {
   "i": 5,
-  "text": "almost two and a half times!",
-  "dur": 1.9
+  "text": "two and a half times!",
+  "dur": 1.168
+ },
+ {
+  "i": 6,
+  "text": "And your heart pushes blood through every last one of them, around the clock.",
+  "dur": 3.792
+ },
+ {
+  "i": 7,
+  "text": "All packed inside... you.",
+  "dur": 1.569
  }
 ]
