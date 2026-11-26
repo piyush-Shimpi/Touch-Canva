@@ -1,16 +1,18 @@
-"""Blood Vessels - ~28 s vertical explainer built with bpy + the Mixamo character Remy.
+"""Blood Vessels v2 - 21.9 s looping vertical short built with bpy + the Mixamo character Remy.
 
 Run:  /opt/bvenv/bin/python build/build_scene.py      (writes build/vessels.blend)
-Assets (not committed, Mixamo licence): assets/Battlecry.fbx (Remy + "Standing Taunt Battlecry").
+Assets (not committed, Mixamo licence): assets/Battlecry.fbx (Remy).
 Earth texture: build/earth_texture.py (Natural Earth, public domain).
 
-Shots (30 fps, 840 frames)
-  S1   1-120  Remy on grass; his blood vessels glow through his skin (x-ray)
-  S2 121-255  the vessel network slides out and stands beside him
-  S3 256-341  Remy reacts (Battlecry animation)
-  S4 342-450  vessel figure collapses into a tangle; one strand shoots out
-  S5 451-600  the line races across the land (counter in captions)
-  S6 601-840  globe: the line wraps the Earth ~2.5 times
+Shots (30 fps, 657 frames = 21.9 s, last frame flows back into frame 1)
+  A    1-21   full standing Remy, whip-zoom into his outstretched forearm        "INSIDE YOU"
+  B   22-90   forearm close-up: laser slice, cross-section window, pulsing vessels
+  C   91-138  camera dives into the vessel network inside the window
+  D  139-229  whip back out to full Remy; his whole vessel network extracts      "HOW LONG?"
+  E  230-260  the network balls up and one long line shoots out
+  F  261-383  the line races across the land (km counter in captions)
+  G  384-617  globe: the line wraps the Earth 2.5 times, heartbeat pulse, rush in
+  H  618-657  "All packed inside... you." dive back down to the frame-1 shot
 """
 import math
 import os
@@ -18,20 +20,21 @@ import random
 
 import bpy  # noqa: I001  (bpy first: the pip module registers bmesh/mathutils)
 import bmesh
-from mathutils import Matrix, Quaternion, Vector
+from mathutils import Matrix, Vector
 from mathutils.bvhtree import BVHTree
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ASSETS = os.path.join(HERE, "..", "assets")
 random.seed(11)
 FPS = 30
-S1, S2, S3, S4, S5, S6 = (1, 120), (121, 255), (256, 341), (342, 450), (451, 600), (601, 840)
+END = 657
+A, B, C, D, E, F, G, H = (1, 21), (22, 90), (91, 138), (139, 229), (230, 260), (261, 383), (384, 617), (618, 657)
 P = "mixamorig:"
 
 bpy.ops.wm.read_factory_settings(use_empty=True)
 sc = bpy.context.scene
 sc.render.fps = FPS
-sc.frame_start, sc.frame_end = 1, S6[1]
+sc.frame_start, sc.frame_end = 1, END
 col = sc.collection
 
 
@@ -48,6 +51,10 @@ def ease(a, b, f, f0, f1):
     t = max(0.0, min(1.0, (f - f0) / (f1 - f0)))
     t = t * t * (3 - 2 * t)
     return a + (b - a) * t
+
+
+def clamp01(x):
+    return max(0.0, min(1.0, x))
 
 
 def link(ob, parent=None):
@@ -72,6 +79,34 @@ def key(ob, path, f, val=None):
     if val is not None:
         setattr(ob, path, val)
     ob.keyframe_insert(path, frame=f)
+
+
+def key_hide(ob, pairs):
+    """pairs of (frame, hidden); never scale an object to 0 (Cycles stalls on degenerate BVH)"""
+    for f, h in pairs:
+        ob.hide_render = h
+        ob.keyframe_insert("hide_render", frame=f)
+    if ob.animation_data and ob.animation_data.action:
+        for fc in iter_fcurves(ob.animation_data.action):
+            if fc.data_path == "hide_render":
+                for kp in fc.keyframe_points:
+                    kp.interpolation = "CONSTANT"
+
+
+def iter_fcurves(act):
+    try:
+        for lay in act.layers:
+            for strip in lay.strips:
+                for cb in strip.channelbags:
+                    yield from cb.fcurves
+    except AttributeError:
+        yield from act.fcurves
+
+
+def heartbeat(f):
+    """lub-dub pulse, ~72 bpm, 0..1"""
+    ph = (f / FPS * 1.2) % 1.0
+    return math.exp(-((ph - 0.05) / 0.045) ** 2) + 0.6 * math.exp(-((ph - 0.25) / 0.05) ** 2)
 
 
 # ================================================================ world + ground
@@ -143,7 +178,6 @@ remy_meshes = [o for o in sc.objects if o.type == "MESH" and o.parent == arm]
 body = next(o for o in remy_meshes if o.name.startswith("Body"))
 root = link(bpy.data.objects.new("RemyRoot", None))
 arm.parent = root
-battle = arm.animation_data.action
 arm.animation_data.action = None
 pb = {b.name: b for b in arm.pose.bones}
 for b in arm.pose.bones:
@@ -169,6 +203,14 @@ def rotate_bone_world(name, axis_world, angle):
     bpy.context.view_layer.update()
 
 
+def aim_bone(name, child, target_dir):
+    a, c = bone_world(name), bone_world(child)
+    d = (c - a).normalized()
+    t = Vector(target_dir).normalized()
+    if d.angle(t) > 1e-4:
+        rotate_bone_world(name, d.cross(t).normalized(), d.angle(t))
+
+
 def evaluated_world_verts(ob):
     dg = bpy.context.evaluated_depsgraph_get()
     ev = ob.evaluated_get(dg)
@@ -188,69 +230,51 @@ bpy.context.view_layer.update()
 vs, _ = evaluated_world_verts(body)
 root.location.z -= min(v.z for v in vs)
 bpy.context.view_layer.update()
-print("Remy height scale", s)
 
-# ---------- A-pose (arms ~62 deg down from the T-pose) and keyed idle
+# ---------- pose: left arm relaxed down, right arm held straight out (forearm toward the camera side)
 DOWN = Vector((0, 0, -1))
-
-
-def arm_down(side, sign):
-    sh = bone_world(f"{side}Arm")
-    el = bone_world(f"{side}ForeArm")
-    d = (el - sh).normalized()
-    target = (d * math.cos(math.radians(62)) + DOWN * math.sin(math.radians(62))).normalized()
-    axis = d.cross(target).normalized()
-    rotate_bone_world(f"{side}Arm", axis, d.angle(target))
-    # slight elbow bend, forearm swings forward (-Y is his front)
-    el = bone_world(f"{side}ForeArm")
-    wr = bone_world(f"{side}Hand")
-    f = (wr - el).normalized()
-    ax2 = f.cross(Vector((0, -1, 0))).normalized()
-    rotate_bone_world(f"{side}ForeArm", ax2, math.radians(12))
-
-
-arm_down("Left", 1)
-arm_down("Right", -1)
-APOSE = {n: b.rotation_quaternion.copy() for n, b in pb.items()}
-IDLE_BONES = ["Spine1", "Spine2", "Neck", "Head", "LeftArm", "RightArm"]
-for f in list(range(1, S3[0], 3)) + [S3[0] - 1]:
-    for n in IDLE_BONES:
-        pb[P + n].rotation_quaternion = APOSE[P + n]
+RS = 1.0 if bone_world("RightArm").x > 0 else -1.0          # which world-x side his right arm is on
+el = bone_world("LeftForeArm")
+d = (el - bone_world("LeftArm")).normalized()
+aim_bone("LeftArm", "LeftForeArm", d * math.cos(math.radians(62)) + DOWN * math.sin(math.radians(62)))
+f_ = (bone_world("LeftHand") - bone_world("LeftForeArm")).normalized()
+rotate_bone_world("LeftForeArm", f_.cross(Vector((0, -1, 0))).normalized(), math.radians(12))
+OUT = Vector((0.78 * RS, -0.55, -0.16)).normalized()
+aim_bone("RightArm", "RightForeArm", OUT)
+aim_bone("RightForeArm", "RightHand", (OUT + Vector((0, -0.05, 0.10))).normalized())
+# palm up-ish: twist the forearm about its own axis
+fa = (bone_world("RightHand") - bone_world("RightForeArm")).normalized()
+rotate_bone_world("RightForeArm", fa, math.radians(-70) * RS)
+aim_bone("RightHand", "RightHandMiddle1", (fa + Vector((0, 0, -0.05))).normalized())
+POSE = {n: b.rotation_quaternion.copy() for n, b in pb.items()}
+IDLE = ["Spine1", "Spine2", "Neck", "Head", "LeftArm", "RightArm"]
+BREATH = END / FPS / 6                                     # 6 whole breaths per loop -> seamless
+for f in list(range(1, END + 1, 3)) + [END]:
+    for n in IDLE:
+        pb[P + n].rotation_quaternion = POSE[P + n]
     bpy.context.view_layer.update()
-    br = math.sin(f / FPS * 2 * math.pi / 3.6)
-    rotate_bone_world("Spine1", (1, 0, 0), -0.012 * br)
-    rotate_bone_world("Spine2", (1, 0, 0), -0.015 * br)
-    look = ease(0, 1, f, 175, 205)                       # turns to look at the vessel figure
-    surprise = ease(0, 1, f, 205, 215) * (1 - ease(0, 1, f, 225, 250))
-    rotate_bone_world("Neck", (0, 0, 1), 0.25 * look)
-    rotate_bone_world("Head", (0, 0, 1), 0.35 * look + 0.04 * math.sin(f / 23))
-    rotate_bone_world("Head", (1, 0, 0), -0.06 * surprise)
-    rotate_bone_world("LeftArm", (0, 1, 0), 0.03 * br)
-    rotate_bone_world("RightArm", (0, 1, 0), -0.03 * br)
-    for n in IDLE_BONES:
+    br = math.sin(f / FPS * 2 * math.pi / BREATH)
+    rotate_bone_world("Spine1", (1, 0, 0), -0.010 * br)
+    rotate_bone_world("Spine2", (1, 0, 0), -0.012 * br)
+    look = ease(0, 1, f, 160, 185) * (1 - ease(0, 1, f, 300, 330))   # glances at his extracted vessels
+    rotate_bone_world("Neck", (0, 0, 1), 0.22 * look * RS * -1)
+    rotate_bone_world("Head", (0, 0, 1), 0.3 * look * RS * -1)
+    rotate_bone_world("Head", (1, 0, 0), -0.05 * ease(0, 1, f, 175, 190) * (1 - ease(0, 1, f, 205, 240)))
+    rotate_bone_world("LeftArm", (0, 1, 0), 0.025 * br)
+    for n in IDLE:
         pb[P + n].keyframe_insert("rotation_quaternion", frame=f)
 for n, b in pb.items():
-    if n.replace(P, "") not in IDLE_BONES:
+    if n.replace(P, "") not in IDLE:
         b.keyframe_insert("rotation_quaternion", frame=1)
     b.keyframe_insert("location", frame=1)
-apose_act = arm.animation_data.action
-apose_act.name = "Remy_Apose_Idle"
-arm.animation_data.action = None
-ad = arm.animation_data
-t1 = ad.nla_tracks.new()
-t1.name = "Idle"
-st1 = t1.strips.new("Idle", 1, apose_act)
-st1.extrapolation = "HOLD"
-t2 = ad.nla_tracks.new()
-t2.name = "Battlecry"
-st2 = t2.strips.new("Battlecry", S3[0], battle)
-st2.extrapolation = "HOLD_FORWARD"
-st2.blend_type = "REPLACE"
 sc.frame_set(1)
 bpy.context.view_layer.update()
+print("right arm side", RS)
 
-# ================================================================ x-ray materials on Remy
-XR_KEYS = [(1, 0.0), (55, 0.0), (95, 0.78), (S2[0] + 55, 0.78), (S2[0] + 105, 0.0)]
+# ================================================================ Remy shader hooks: x-ray + forearm cut window
+cut_box = link(bpy.data.objects.new("CutBox", None))
+cut_box.empty_display_type = "CUBE"
+XR_KEYS = [(1, 0.0), (D[0] + 12, 0.0), (D[0] + 22, 0.55), (D[0] + 62, 0.55), (D[0] + 80, 0.0)]
 for m in {s.material for o in remy_meshes for s in o.material_slots if s.material}:
     t = m.node_tree
     out = next(n for n in t.nodes if n.type == "OUTPUT_MATERIAL")
@@ -260,7 +284,7 @@ for m in {s.material for o in remy_meshes for s in o.material_slots if s.materia
     em.inputs["Color"].default_value, em.inputs["Strength"].default_value = hexc("#bfe4ff"), 0.35
     lw = t.nodes.new("ShaderNodeLayerWeight")
     lw.inputs["Blend"].default_value = 0.35
-    ghost = t.nodes.new("ShaderNodeMixShader")       # transparent body with a pale rim
+    ghost = t.nodes.new("ShaderNodeMixShader")
     t.links.new(lw.outputs["Facing"], ghost.inputs[0])
     t.links.new(tr.outputs[0], ghost.inputs[1])
     t.links.new(em.outputs[0], ghost.inputs[2])
@@ -270,17 +294,278 @@ for m in {s.material for o in remy_meshes for s in o.material_slots if s.materia
     t.links.new(v.outputs[0], mix.inputs[0])
     t.links.new(src, mix.inputs[1])
     t.links.new(ghost.outputs[0], mix.inputs[2])
-    t.links.new(mix.outputs[0], out.inputs["Surface"])
     for f, val in XR_KEYS:
         v.outputs[0].default_value = val
         v.outputs[0].keyframe_insert("default_value", frame=f)
+    # cut mask: inside the CutBox empty (|x|,|y|,|z| < 1) and CUT > 0 -> transparent
+    tco = t.nodes.new("ShaderNodeTexCoord")
+    tco.object = cut_box
+    vab = t.nodes.new("ShaderNodeVectorMath")
+    vab.operation = "ABSOLUTE"
+    t.links.new(tco.outputs["Object"], vab.inputs[0])
+    sxyz = t.nodes.new("ShaderNodeSeparateXYZ")
+    t.links.new(vab.outputs[0], sxyz.inputs[0])
+    m1 = t.nodes.new("ShaderNodeMath")
+    m1.operation = "MAXIMUM"
+    t.links.new(sxyz.outputs[0], m1.inputs[0])
+    t.links.new(sxyz.outputs[1], m1.inputs[1])
+    m2 = t.nodes.new("ShaderNodeMath")
+    m2.operation = "MAXIMUM"
+    t.links.new(m1.outputs[0], m2.inputs[0])
+    t.links.new(sxyz.outputs[2], m2.inputs[1])
+    lt = t.nodes.new("ShaderNodeMath")
+    lt.operation = "LESS_THAN"
+    lt.inputs[1].default_value = 1.0
+    t.links.new(m2.outputs[0], lt.inputs[0])
+    cutv = t.nodes.new("ShaderNodeValue")
+    cutv.name = "CUT"
+    mm = t.nodes.new("ShaderNodeMath")
+    mm.operation = "MULTIPLY"
+    t.links.new(lt.outputs[0], mm.inputs[0])
+    t.links.new(cutv.outputs[0], mm.inputs[1])
+    tr2 = t.nodes.new("ShaderNodeBsdfTransparent")
+    mix2 = t.nodes.new("ShaderNodeMixShader")
+    t.links.new(mm.outputs[0], mix2.inputs[0])
+    t.links.new(mix.outputs[0], mix2.inputs[1])
+    t.links.new(tr2.outputs[0], mix2.inputs[2])
+    t.links.new(mix2.outputs[0], out.inputs["Surface"])
+    for f, val in ((1, 0.0), (B[0], 1.0), (D[0], 0.0)):
+        cutv.outputs[0].default_value = val
+        cutv.outputs[0].keyframe_insert("default_value", frame=f)
+        for fc in iter_fcurves(t.animation_data.action):
+            if 'nodes["CUT"]' in fc.data_path:
+                for kp in fc.keyframe_points:
+                    kp.interpolation = "CONSTANT"
 
-# ================================================================ vessel network (grown inside the body)
+# ================================================================ forearm cross-section (shots A-C)
+bverts, bpolys = evaluated_world_verts(body)
+bvh_body = BVHTree.FromPolygons(bverts, bpolys)
+EL, WR = bone_world("RightForeArm"), bone_world("RightHand")
+u = (WR - EL).normalized()
+LF = (WR - EL).length
+n0 = Vector((0.0, -1.0, 0.75))
+nv = (n0 - u * n0.dot(u)).normalized()                   # towards the close-up camera
+wv = u.cross(nv).normalized()
+
+
+def thickness(p, d):
+    """distance from p to the skin along +d and -d (rays fired from outside)"""
+    a = bvh_body.ray_cast(p + d * 0.3, -d, 0.6)[0]
+    b = bvh_body.ray_cast(p - d * 0.3, d, 0.6)[0]
+    return a, b
+
+
+mid = EL + u * (LF * 0.5)
+pa, pb_ = thickness(mid, nv)
+qa, qb = thickness(mid, wv)
+ctr = mid
+if pa and pb_:
+    ctr = ctr + nv * (((pa - mid).dot(nv) + (pb_ - mid).dot(nv)) / 2)
+if qa and qb:
+    ctr = ctr + wv * (((qa - mid).dot(wv) + (qb - mid).dot(wv)) / 2)
+RN = ((pa - pb_).length / 2) if (pa and pb_) else 0.04
+RW = ((qa - qb).length / 2) if (qa and qb) else 0.04
+AX0 = ctr - u * (LF * 0.5)                                # arm axis start (elbow end)
+S0, S1 = 0.17 * LF, 0.80 * LF                             # window span along the forearm
+HW = 0.74 * RW                                            # window half width
+WC = AX0 + u * ((S0 + S1) / 2)                            # window centre on the axis
+print("forearm R", round(RN, 4), round(RW, 4), "len", round(LF, 3))
+
+ROT = Matrix((u, wv, nv)).transposed()                    # columns u, w, n
+
+
+def place_world(ob, M):
+    """parent ob to the right forearm bone keeping world matrix M"""
+    ob.parent = arm
+    ob.parent_type = "BONE"
+    ob.parent_bone = P + "RightForeArm"
+    bpy.context.view_layer.update()
+    bm_ = pb[P + "RightForeArm"]
+    par = arm.matrix_world @ bm_.matrix @ Matrix.Translation((0, bm_.length, 0))
+    ob.matrix_parent_inverse = par.inverted()
+    ob.matrix_basis = M
+
+
+place_world(cut_box, Matrix.Translation(WC) @ ROT.to_4x4() @ Matrix.Diagonal(((S1 - S0) / 2, HW, RN * 1.7, 1)))
+# window opens like a slit peeling back: y scale 0.04 -> 1
+cut_box.keyframe_insert("scale", frame=1)
+full_sy = cut_box.scale.y
+for f, k in ((1, 0.04), (B[0] + 9, 0.04), (B[0] + 20, 1.0)):
+    cut_box.scale.y = full_sy * k
+    cut_box.keyframe_insert("scale", frame=f)
+
+
+def sec_pt(s_, ang, rad_scale=1.0):
+    """point on an elliptical tube around the arm axis; ang=0 faces the camera (n)"""
+    return AX0 + u * s_ + (nv * math.cos(ang) * RN + wv * math.sin(ang) * RW) * rad_scale
+
+
+# trough: elliptical tube open towards the camera + end caps
+ANG0 = math.radians(48)
+NS, NA = 24, 28
+tm = bpy.data.meshes.new("Trough")
+bm = bmesh.new()
+grid = []
+for i in range(NS + 1):
+    s_ = S0 - 0.004 + (S1 - S0 + 0.008) * i / NS
+    row = []
+    for j in range(NA + 1):
+        ang = ANG0 + (2 * math.pi - 2 * ANG0) * j / NA
+        row.append(bm.verts.new(sec_pt(s_, ang, 0.93)))
+    grid.append(row)
+for i in range(NS):
+    for j in range(NA):
+        bm.faces.new((grid[i][j], grid[i + 1][j], grid[i + 1][j + 1], grid[i][j + 1]))
+for i in (0, NS):
+    c_ = bm.verts.new(AX0 + u * (S0 - 0.004 + (S1 - S0 + 0.008) * i / NS) + nv * RN * 0.62)
+    for j in range(NA):
+        bm.faces.new((c_, grid[i][j], grid[i][j + 1]))
+bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+for fc in bm.faces:
+    fc.smooth = True
+bm.to_mesh(tm)
+bm.free()
+flesh = bpy.data.materials.new("Flesh")
+t = flesh.node_tree
+fb = next(n for n in t.nodes if n.type == "BSDF_PRINCIPLED")
+fco = t.nodes.new("ShaderNodeTexCoord")
+fwave = t.nodes.new("ShaderNodeTexWave")                  # muscle fibres along the arm
+fwave.inputs["Scale"].default_value, fwave.inputs["Distortion"].default_value = 60, 4
+t.links.new(fco.outputs["Generated"], fwave.inputs["Vector"])
+framp = t.nodes.new("ShaderNodeValToRGB")
+framp.color_ramp.elements[0].color, framp.color_ramp.elements[1].color = hexc("#5a0d14"), hexc("#a3222e")
+t.links.new(fwave.outputs["Fac"], framp.inputs[0])
+t.links.new(framp.outputs["Color"], fb.inputs["Base Color"])
+fb.inputs["Roughness"].default_value = 0.35
+fb.inputs["Coat Weight"].default_value = 0.5
+fb.inputs["Emission Color"].default_value = hexc("#3a0508")
+fb.inputs["Emission Strength"].default_value = 0.6
+tm.materials.append(flesh)
+trough = link(bpy.data.objects.new("Trough", tm))
+place_world(trough, Matrix.Identity(4))
+trough.matrix_basis = Matrix.Identity(4)
+
+# glowing laser cut outline on the skin surface
+rim_pts = []
+corners = [(S0, -HW), (S1, -HW), (S1, HW), (S0, HW), (S0, -HW)]
+for (sa, wa), (sb, wb) in zip(corners, corners[1:]):
+    n_ = max(2, int(((sb - sa) ** 2 + (wb - wa) ** 2) ** 0.5 / 0.002))
+    for i in range(n_):
+        k = i / n_
+        p0 = AX0 + u * (sa + (sb - sa) * k) + wv * (wa + (wb - wa) * k)
+        hit = bvh_body.ray_cast(p0 + nv * 0.3, -nv, 0.6)[0]
+        rim_pts.append((hit if hit else p0 + nv * RN) + nv * 0.0006)
+rim_pts.append(rim_pts[0])
+rc = bpy.data.curves.new("CutRim", "CURVE")
+rc.dimensions = "3D"
+rc.bevel_depth, rc.bevel_resolution = 0.0007, 2
+rc.bevel_factor_mapping_end = "SPLINE"
+sp = rc.splines.new("POLY")
+sp.points.add(len(rim_pts) - 1)
+for pt, p in zip(sp.points, rim_pts):
+    pt.co = (p.x, p.y, p.z, 1.0)
+rimm, _ = principled("Laser", "#7ff0ff", 0.2, emission="#38e8ff", strength=6)
+rc.materials.append(rimm)
+rim = link(bpy.data.objects.new("CutRim", rc))
+place_world(rim, Matrix.Identity(4))
+for f, v_ in ((1, 0.0), (B[0], 0.0), (B[0] + 10, 1.0)):
+    rc.bevel_factor_end = v_
+    rc.keyframe_insert("bevel_factor_end", frame=f)
+# rim glow cools after the cut
+for f, v_ in ((B[0] + 10, 6.0), (B[0] + 30, 2.5)):
+    rimm.node_tree.nodes["Principled BSDF"].inputs["Emission Strength"].default_value = v_
+    rimm.node_tree.nodes["Principled BSDF"].inputs["Emission Strength"].keyframe_insert("default_value", frame=f)
+# laser spark riding the cut
+spark_m, _ = principled("Spark", "#ffffff", 0.2, emission="#d8fdff", strength=40)
+sme_ = bpy.data.meshes.new("Spark")
+bm = bmesh.new()
+bmesh.ops.create_icosphere(bm, subdivisions=2, radius=0.0035)
+bm.to_mesh(sme_)
+bm.free()
+sme_.materials.append(spark_m)
+spark = link(bpy.data.objects.new("Spark", sme_))
+key_hide(spark, ((1, True), (B[0], False), (B[0] + 11, True)))
+cum = [0.0]
+for a_, b_ in zip(rim_pts, rim_pts[1:]):
+    cum.append(cum[-1] + (b_ - a_).length)
+for f in range(B[0], B[0] + 11):
+    target = cum[-1] * clamp01((f - B[0]) / 10)
+    i = next(i for i, c in enumerate(cum) if c >= target - 1e-9)
+    key(spark, "location", f, rim_pts[i] + nv * 0.001)
+
+# dense glowing arteries (red) and veins (blue) inside the window
+art_m, art_b = principled("ArmArtery", "#c3101c", 0.3, emission="#ff2633", strength=2.0)
+vein_m, vein_b = principled("ArmVein", "#1b3fb8", 0.3, emission="#2f6bff", strength=1.6)
+for f in range(1, D[0] + 1, 2):
+    hb = heartbeat(f)
+    art_b.inputs["Emission Strength"].default_value = 1.4 + 3.2 * hb
+    art_b.inputs["Emission Strength"].keyframe_insert("default_value", frame=f)
+    vein_b.inputs["Emission Strength"].default_value = 1.1 + 1.6 * hb
+    vein_b.inputs["Emission Strength"].keyframe_insert("default_value", frame=f)
+ac = bpy.data.curves.new("ArmVessels", "CURVE")
+ac.dimensions = "3D"
+ac.bevel_depth, ac.bevel_resolution = 1.0, 2
+ac.use_fill_caps = True
+ac.materials.append(art_m)
+ac.materials.append(vein_m)
+
+
+def arm_vessel(kind, ang, rr, rad, s_a=None, s_b=None, wob=0.08):
+    s_a = S0 - 0.01 if s_a is None else s_a
+    s_b = S1 + 0.01 if s_b is None else s_b
+    n_ = max(4, int((s_b - s_a) / 0.004))
+    sp_ = ac.splines.new("POLY")
+    sp_.points.add(n_)
+    ph = random.uniform(0, 6.28)
+    for i, pt in enumerate(sp_.points):
+        k = i / n_
+        a_ = ang + wob * math.sin(ph + k * random.uniform(5, 9))
+        r_ = rr + 0.05 * math.sin(ph * 2 + k * 7)
+        p = sec_pt(s_a + (s_b - s_a) * k, a_, r_)
+        pt.co = (p.x, p.y, p.z, 1.0)
+        pt.radius = rad * (1 - 0.25 * k)
+    sp_.material_index = kind
+    sp_.use_smooth = True
+
+
+# big paired trunks (radial/ulnar artery + veins), then a dense mesh of smaller ones
+for ang, kind, rad in ((2.3, 0, 0.0034), (2.55, 1, 0.0038), (3.9, 0, 0.0032), (3.65, 1, 0.0036),
+                       (3.14, 0, 0.0026), (2.95, 1, 0.003)):
+    arm_vessel(kind, ang, 0.55, rad)
+for k in range(70):
+    arm_vessel(k % 2, random.uniform(1.0, 5.3), random.uniform(0.25, 0.85), random.uniform(0.0007, 0.0018),
+               wob=0.25)
+for k in range(90):                                          # short capillary loops
+    s_a = random.uniform(S0, S1 - 0.02)
+    arm_vessel(random.choice((0, 0, 1)), random.uniform(0.9, 5.4), random.uniform(0.3, 0.9),
+               random.uniform(0.0004, 0.0008), s_a, s_a + random.uniform(0.015, 0.05), wob=0.6)
+arm_ves = link(bpy.data.objects.new("ArmVessels", ac))
+place_world(arm_ves, Matrix.Identity(4))
+for ob in (trough, rim, arm_ves):
+    key_hide(ob, ((1, True), (B[0], False), (D[0], True)))
+# small soft key light that only lives for the close-ups
+kl = link(bpy.data.objects.new("CloseLight", bpy.data.lights.new("CloseLight", "AREA")))
+kl.data.size, kl.data.color = 0.25, (1.0, 0.95, 0.9)
+kl.location = WC + nv * 0.45 + wv * 0.15 - u * 0.1
+kl.rotation_euler = (WC - kl.location).to_track_quat("-Z", "Y").to_euler()
+for f, en in ((1, 0.0), (A[1] - 6, 0.0), (A[1], 6.0), (C[1], 6.0), (D[0], 0.0)):
+    kl.data.energy = en
+    kl.data.keyframe_insert("energy", frame=f)
+
+# ================================================================ full-body vessel network
+# grown against body + clothing: Remy's body mesh has no skin under the shirt/shorts, which left the
+# torso and upper thighs sparse (the "thigh gap") when only the body surface was used.
 sc.frame_set(1)
 bpy.context.view_layer.update()
-bverts, bpolys = evaluated_world_verts(body)
-bvh = BVHTree.FromPolygons(bverts, bpolys)
-CB = Vector((0.0, 0.0, 1.0))                     # vessel object origin (body centre, then moved)
+allv, allp = [], []
+for o in remy_meshes:
+    if o.name.split(".")[0] in ("Body", "Tops", "Bottoms", "Shoes"):
+        vs_, ps_ = evaluated_world_verts(o)
+        off = len(allv)
+        allv += vs_
+        allp += [tuple(i + off for i in p) for p in ps_]
+bvh = BVHTree.FromPolygons(allv, allp)
+CB = Vector((0.0, 0.0, 1.0))
 
 
 def inside_fix(p, depth):
@@ -313,8 +598,8 @@ for sd in ("Left", "Right"):
     CHAINS.append(["Spine2", f"{sd}Shoulder", f"{sd}Arm", f"{sd}ForeArm", f"{sd}Hand", f"{sd}HandMiddle1",
                    f"{sd}HandMiddle2", f"{sd}HandMiddle3"])
     CHAINS.append(["Hips", f"{sd}UpLeg", f"{sd}Leg", f"{sd}Foot", f"{sd}ToeBase"])
-splines = []          # list of (points[], radii[])
-trunk_pts = []
+splines = []
+trunk_pts, leg_top = [], []
 for ch in CHAINS:
     base = chain_pts(ch)
     for off, rad in ((0.012, 0.0034), (-0.012, 0.0029)):
@@ -326,11 +611,12 @@ for ch in CHAINS:
             rads.append(rad * (1.6 if ch[0] == "Hips" and ch[1] == "Spine" else 1.0))
         splines.append((pts, rads))
         trunk_pts += pts
+        if "UpLeg" in ch[1]:
+            leg_top += pts[: len(pts) // 2]                 # hips -> knees
 
 
 def rnd_unit():
-    v = Vector([random.gauss(0, 1) for _ in range(3)])
-    return v.normalized()
+    return Vector([random.gauss(0, 1) for _ in range(3)]).normalized()
 
 
 def grow(p, d, n, r0, depth_lvl):
@@ -347,9 +633,10 @@ def grow(p, d, n, r0, depth_lvl):
     splines.append((pts, rads))
 
 
-for k in range(1150):
-    p = random.choice(trunk_pts)
-    grow(p, rnd_unit(), random.randint(8, 24), random.uniform(0.0011, 0.0019), 0)
+for k in range(1250):
+    grow(random.choice(trunk_pts), rnd_unit(), random.randint(8, 24), random.uniform(0.0011, 0.0019), 0)
+for k in range(260):                                       # extra coverage for hips/thighs
+    grow(random.choice(leg_top), rnd_unit(), random.randint(10, 26), random.uniform(0.0012, 0.0019), 0)
 cu = bpy.data.curves.new("Vessels", "CURVE")
 cu.dimensions = "3D"
 cu.bevel_depth, cu.bevel_resolution = 1.0, 1
@@ -363,27 +650,14 @@ for pts, rads in splines:
         pt.co = (q.x, q.y, q.z, 1.0)
         pt.radius = r
     npts += len(pts)
-vmat, vb = principled("Blood", "#b5121b", rough=0.35, emission="#ff2a2a", strength=0.15)
+vmat, vb = principled("Blood", "#b5121b", rough=0.35, emission="#ff2a2a", strength=0.35)
 vb.inputs["Subsurface Weight"].default_value = 0.2
 vb.inputs["Coat Weight"].default_value = 0.4
-vfade = vmat.node_tree.nodes.new("ShaderNodeValue")
-vfade.name = "VFADE"
-vtr = vmat.node_tree.nodes.new("ShaderNodeBsdfTransparent")
-vmix = vmat.node_tree.nodes.new("ShaderNodeMixShader")
-vout = next(n for n in vmat.node_tree.nodes if n.type == "OUTPUT_MATERIAL")
-vmat.node_tree.links.new(vfade.outputs[0], vmix.inputs[0])
-vmat.node_tree.links.new(vtr.outputs[0], vmix.inputs[1])
-vmat.node_tree.links.new(vb.outputs[0], vmix.inputs[2])
-vmat.node_tree.links.new(vmix.outputs[0], vout.inputs["Surface"])
-for f, val in ((1, 0.0), (60, 0.0), (95, 1.0)):
-    vfade.outputs[0].default_value = val
-    vfade.outputs[0].keyframe_insert("default_value", frame=f)
 cu.materials.append(vmat)
 vessels = link(bpy.data.objects.new("Vessels", cu))
 vessels.location = CB
 print("vessel splines", len(splines), "points", npts)
 
-# tangle shape key: every strand becomes a random walk inside a ball
 vessels.shape_key_add(name="Basis", from_mix=False)
 tk = vessels.shape_key_add(name="Tangle", from_mix=False)
 R = 0.26
@@ -400,34 +674,37 @@ for pts, _ in splines:
                 d = (d - 2 * d.dot(c.normalized()) * c.normalized()).normalized()
         tk.data[i].co = c
         i += 1
-VX = Vector((0.95, 0.0, 1.0))                     # where the vessel figure stands
-for f, loc in ((1, CB), (S2[0] + 30, CB), (S2[0] + 95, VX)):
+VX = Vector((-1.3 * RS, 0.0, 1.0))                         # stands on his free (left) side
+X0 = D[0] + 10                                             # extraction starts
+for f, loc in ((1, CB), (X0, CB), (X0 + 50, VX)):
     key(vessels, "location", f, loc)
-for f in range(S2[0] + 30, S2[0] + 96, 3):        # little wobble while it slides out
-    k = ease(0, 1, f, S2[0] + 30, S2[0] + 95)
+for f in range(X0, X0 + 51, 3):
+    k = ease(0, 1, f, X0, X0 + 50)
     vessels.rotation_euler = (0, 0, 0.25 * math.sin(k * math.pi))
     key(vessels, "rotation_euler", f)
-for f, v in ((1, 0.0), (S4[0] + 3, 0.0), (S4[0] + 53, 1.0)):
+for f, v in ((1, 0.0), (E[0], 0.0), (E[0] + 16, 1.0)):
     tk.value = v
     tk.keyframe_insert("value", frame=f)
-for f, sc_ in ((1, 1.0), (S4[0] + 55, 1.0), (S4[1], 0.12), (S4[1] + 1, 0.0)):
+for f, sc_ in ((1, 1.0), (E[0] + 6, 1.0), (E[1], 0.15)):
     key(vessels, "scale", f, (sc_,) * 3)
-for f in range(S4[0], S4[1] + 1, 2):              # tangle spins as it unravels
-    vessels.rotation_euler = (0.0, 0.0, ease(0, 1, f, S4[0], S4[1]) * 6.0)
+for f in range(E[0], E[1] + 1, 2):
+    vessels.rotation_euler = (0.0, 0.0, ease(0, 1, f, E[0], E[1]) * 6.0)
     key(vessels, "rotation_euler", f)
+key_hide(vessels, ((1, True), (D[0], False), (F[0], True)))
 
 # ================================================================ the single long line (ground run)
+DIRX = -RS                                                  # race away from Remy
 line_pts = []
-for j in range(25):                                # arc from the tangle down to the ground
-    t = j / 24
-    line_pts.append(Vector((VX.x + 1.1 * t, 0.0, VX.z * (1 - t) ** 2 + 0.025 * t)))
-x = VX.x + 1.1
+for j in range(25):
+    t_ = j / 24
+    line_pts.append(Vector((VX.x + DIRX * 1.1 * t_, 0.0, VX.z * (1 - t_) ** 2 + 0.025 * t_)))
+x = 1.1
 while x < 3600:
     x += 1.5
-    line_pts.append(Vector((x, 5.0 * math.sin((x - 2) / 140) * min(1, (x - 2) / 60), 0.025)))
+    line_pts.append(Vector((VX.x + DIRX * x, 5.0 * math.sin((x - 2) / 140) * min(1, (x - 2) / 60), 0.025)))
 lengths = [0.0]
-for a, b in zip(line_pts, line_pts[1:]):
-    lengths.append(lengths[-1] + (b - a).length)
+for a_, b_ in zip(line_pts, line_pts[1:]):
+    lengths.append(lengths[-1] + (b_ - a_).length)
 LTOT = lengths[-1]
 lc = bpy.data.curves.new("Line", "CURVE")
 lc.dimensions = "3D"
@@ -447,33 +724,30 @@ def arc_point(s_):
     s_ = max(0.0, min(LTOT, s_))
     lo, hi = 0, len(lengths) - 1
     while hi - lo > 1:
-        mid = (lo + hi) // 2
-        if lengths[mid] < s_:
-            lo = mid
+        mid_ = (lo + hi) // 2
+        if lengths[mid_] < s_:
+            lo = mid_
         else:
-            hi = mid
+            hi = mid_
     seg = lengths[hi] - lengths[lo]
     return line_pts[lo].lerp(line_pts[hi], 0 if seg == 0 else (s_ - lengths[lo]) / seg)
 
 
+L0 = E[0] + 6
+
+
 def tip_s(f):
-    if f < S4[0] + 55:
+    if f < L0:
         return 0.0
-    if f <= S4[1]:
-        return 25.0 * ((f - S4[0] - 55) / (S4[1] - S4[0] - 55)) ** 2
-    return 25.0 + 3400.0 * ((f - S4[1]) / (S5[1] - S4[1])) ** 2.4
+    if f <= E[1]:
+        return 25.0 * ((f - L0) / (E[1] - L0)) ** 2
+    return 25.0 + 3400.0 * ((f - E[1]) / (F[1] - E[1])) ** 2.4
 
 
-for f in range(1, S5[1] + 2):
+for f in range(1, F[1] + 2):
     lc.bevel_factor_end = tip_s(f) / LTOT
     lc.keyframe_insert("bevel_factor_end", frame=f)
-for f, h in ((1, True), (S4[0] + 54, False), (S5[1] + 1, True)):
-    line.hide_render = h
-    line.keyframe_insert("hide_render", frame=f)
-# vessels are behind the camera from S5 on; leaving them in makes Cycles stall at frame 451
-for f, h in ((1, False), (S5[0], True)):
-    vessels.hide_render = h
-    vessels.keyframe_insert("hide_render", frame=f)
+key_hide(line, ((1, True), (L0, False), (G[0], True)))
 
 # trees along the run (linked duplicates)
 leaf, _ = principled("Leaf", "#2f6b2a", 0.8)
@@ -509,16 +783,16 @@ for k in range(1400):
     side = random.choice((-1, 1))
     yy = 5.0 * math.sin((xx - 2) / 140) + side * random.uniform(5, 70) ** 1.0
     t = link(bpy.data.objects.new(f"Tree_{k}", random.choice(tmeshes)))
-    t.location = (xx, yy, 0)
+    t.location = (VX.x + DIRX * xx, yy, 0)
     sz = random.uniform(0.8, 1.6)
     t.scale = (sz, sz, sz * random.uniform(0.9, 1.3))
     t.rotation_euler.z = random.uniform(0, 6.28)
 
 # ================================================================ globe (high above everything)
-G = Vector((0.0, 0.0, 20000.0))
+GC = Vector((0.0, 0.0, 20000.0))
 RE = 10.0
 globe_rig = link(bpy.data.objects.new("GlobeRig", None))
-globe_rig.location = G
+globe_rig.location = GC
 globe_rig.rotation_euler = (math.radians(18), 0, 0)
 gmat = bpy.data.materials.new("Earth")
 t = gmat.node_tree
@@ -633,7 +907,7 @@ bm.to_mesh(sme)
 bm.free()
 sme.materials.append(smat)
 stars = link(bpy.data.objects.new("Stars", sme))
-stars.location = G
+stars.location = GC
 stars.visible_shadow = False
 # the wrapping line: 2.5 great-circle loops whose plane slowly precesses
 wrap_pts = []
@@ -659,22 +933,27 @@ for pt, p in zip(sp.points, wrap_pts):
 wmat, wb = principled("WrapLine", "#d0121e", 0.3, emission="#ff1f2a", strength=2.5)
 wc.materials.append(wmat)
 wrap = link(bpy.data.objects.new("Wrap", wc), globe_rig)
-W0, W1 = S6[0] + 40, S6[0] + 200
-for f in range(S6[0], S6[1] + 1, 2):
-    k = max(0.0, min(1.0, (f - W0) / (W1 - W0)))
+W0, W1 = G[0] + 8, G[0] + 97                               # wrap draws 13.0 s -> 16.0 s
+for f in range(G[0], G[1] + 1, 2):
+    k = clamp01((f - W0) / (W1 - W0))
     wc.bevel_factor_end = 0.002 + 0.998 * (k * k * (3 - 2 * k) * 0.25 + k * 0.75)
     wc.keyframe_insert("bevel_factor_end", frame=f)
-    globe_rig.rotation_euler = (math.radians(18), 0, -0.55 + 0.75 * (f - S6[0]) / (S6[1] - S6[0]))
+    globe_rig.rotation_euler = (math.radians(18), 0, -0.55 + 0.85 * (f - G[0]) / (G[1] - G[0]))
     globe_rig.keyframe_insert("rotation_euler", frame=f)
-    clouds.rotation_euler = (0, 0, 0.12 * (f - S6[0]) / (S6[1] - S6[0]))
+    clouds.rotation_euler = (0, 0, 0.12 * (f - G[0]) / (G[1] - G[0]))
     clouds.keyframe_insert("rotation_euler", frame=f)
+for f in range(G[0], G[1] + 1, 1):                         # heartbeat glow once the wrap is done
+    hb = heartbeat(f) * ease(0, 1, f, W1, W1 + 10)
+    wb.inputs["Emission Strength"].default_value = 2.5 + 7.0 * hb
+    wb.inputs["Emission Strength"].keyframe_insert("default_value", frame=f)
+
 
 # ================================================================ cameras + cuts
 def camera(name, lens=35, fstop=None, focus=None):
     c = bpy.data.cameras.new(name)
     c.lens, c.sensor_fit, c.sensor_width = lens, "VERTICAL", 36
     c.sensor_height = 36
-    c.clip_start, c.clip_end = 0.01, 5000
+    c.clip_start, c.clip_end = 0.002, 5000
     if fstop:
         c.dof.use_dof, c.dof.aperture_fstop = True, fstop
         if focus is not None:
@@ -693,44 +972,86 @@ def cam_key(ob, f, loc, target):
     ob.keyframe_insert("rotation_euler", frame=f)
 
 
-focus_body = link(bpy.data.objects.new("FocusBody", None))
-focus_body.location = (0, 0, 1.2)
-c1 = camera("Cam_S1", 40, 2.8, focus_body)
-for f in range(S1[0], S1[1] + 1, 4):
-    k = (f - S1[0]) / (S1[1] - S1[0])
-    cam_key(c1, f, (0.35 - 0.15 * k, -3.6 + 0.7 * k, 1.05 + 0.05 * k), (0.0, 0.0, 1.0 + 0.05 * k))
+def out_cubic(t):
+    t = clamp01(t)
+    return 1 - (1 - t) ** 3
+
+
+def in_out(t):
+    t = clamp01(t)
+    return 4 * t ** 3 if t < 0.5 else 1 - (-2 * t + 2) ** 3 / 2
+
+
+# loop pose: full standing Remy (also the very last frame)
+P0, T0 = Vector((-0.15 * RS, -4.2, 1.05)), Vector((-0.2 * RS, 0.0, 1.0))
+PE, TE = WC + nv * 0.26 - u * 0.02, WC                     # forearm close-up
+cA = camera("Cam_A", 40)
+for f in range(A[0], A[1] + 2):
+    k = out_cubic((f - A[0]) / (A[1] - A[0] + 1))          # moving at full speed on frame 1: no static pause
+    kk = in_out((f - A[0]) / (A[1] - A[0] + 1))
+    cam_key(cA, f, P0.lerp(PE, k), T0.lerp(TE, kk))
+    cA.data.lens = 40 - 8 * k
+    cA.data.keyframe_insert("lens", frame=f)
+cB = camera("Cam_B", 32)
+for f in range(B[0], B[1] + 1, 2):
+    k = (f - B[0]) / (B[1] - B[0])
+    cam_key(cB, f, WC + nv * (0.26 - 0.08 * k) + wv * 0.03 * math.sin(k * 2) - u * 0.02, WC + u * 0.01 * k)
+cC = camera("Cam_C", 22)                                    # dive into the vessels, then fly along them
+for f in range(C[0], C[1] + 1):
+    k = in_out((f - C[0]) / (C[1] - C[0]))
+    p0, p1, p2 = WC + nv * 0.18, WC + nv * 0.05 - u * 0.02, WC + nv * RN * 0.55 + u * 0.01
+    q0, q1, q2 = WC, WC + u * 0.01, WC - nv * RN * 0.5 + u * 0.035
+    if k < 0.6:
+        kk = k / 0.6
+        loc, tgt = p0.lerp(p1, kk), q0.lerp(q1, kk)
+    else:
+        kk = (k - 0.6) / 0.4
+        loc, tgt = p1.lerp(p2, kk), q1.lerp(q2, kk)
+    cam_key(cC, f, loc, tgt)
 focus_mid = link(bpy.data.objects.new("FocusMid", None))
-focus_mid.location = (0.45, 0, 1.0)
-c2 = camera("Cam_S2", 32, 4, focus_mid)
-for f in range(S2[0], S2[1] + 1, 4):
-    k = (f - S2[0]) / (S2[1] - S2[0])
-    cam_key(c2, f, (0.25 + 0.3 * k, -4.3 + 0.3 * k, 1.0), (0.2 + 0.3 * ease(0, 1, f, S2[0] + 25, S2[0] + 100), 0, 0.95))
-c3 = camera("Cam_S3", 30, 4, focus_mid)
-for f in range(S3[0], S3[1] + 1, 4):
-    k = (f - S3[0]) / (S3[1] - S3[0])
-    cam_key(c3, f, (-1.2 + 0.25 * k, -3.2 + 0.25 * k, 0.75), (0.35, 0, 0.95))
-c4 = camera("Cam_S4", 32, 5.6, vessels)
-for f in range(S4[0], S4[1] + 1, 2):
+focus_mid.location = (VX.x * 0.5, 0, 1.0)
+PW, TW = Vector((VX.x * 0.45, -4.6, 1.05)), Vector((VX.x * 0.45, 0, 0.98))   # wide: Remy + extracted vessels
+cD = camera("Cam_D", 30, 5.6, focus_mid)
+for f in range(D[0], D[1] + 1):
+    k = out_cubic((f - D[0]) / 12)                         # whip back out
+    kt = out_cubic((f - D[0]) / 5)
+    cam_key(cD, f, PE.lerp(PW, k) + Vector((0, 0.15 * (f - D[0]) / (D[1] - D[0]), 0)), TE.lerp(TW, kt))
+cE = camera("Cam_E", 32, 5.6, vessels)
+for f in range(E[0], E[1] + 1, 2):
     tip = arc_point(tip_s(f))
-    k = ease(0, 1, f, S4[0] + 55, S4[1])
+    k = ease(0, 1, f, L0, E[1])
     tgt = VX.lerp(tip + Vector((0, 0, 0.2)), k)
-    cam_key(c4, f, (0.15 + 1.6 * k, -2.6 - 1.2 * k, 1.1 - 0.35 * k), tgt)
-c5 = camera("Cam_S5", 28)
-for f in range(S5[0], S5[1] + 1):
+    cam_key(cE, f, (VX.x + DIRX * (-0.8 + 1.6 * k), -2.6 - 1.2 * k, 1.1 - 0.35 * k), tgt)
+cF = camera("Cam_F", 28)
+for f in range(F[0], F[1] + 1):
     s_ = tip_s(f)
     spd = tip_s(f + 1) - s_
     tip = arc_point(s_)
     back = arc_point(s_ - 2.2 - spd * 2.5)
     h = 0.35 + spd * 0.35
-    cam_key(c5, f, back + Vector((0, -0.45 - spd * 0.05, h)), tip + Vector((0, 0, 0.1)))
-c6 = camera("Cam_S6", 50)
-for f in range(S6[0], S6[1] + 1, 4):
-    k = ease(0, 1, f, S6[0], S6[1])
-    cam_key(c6, f, G + Vector((0, -58 + 9 * k, 4 - 2 * k)), G + Vector((0, 0, 0.5)))
-for c, (a, _) in ((c1, S1), (c2, S2), (c3, S3), (c4, S4), (c5, S5), (c6, S6)):
-    m = sc.timeline_markers.new(c.name, frame=a)
+    cam_key(cF, f, back + Vector((0, -0.45 - spd * 0.05, h)), tip + Vector((0, 0, 0.1)))
+cG = camera("Cam_G", 50)
+for f in range(G[0], G[1] + 1):
+    if f < G[0] + 16:
+        dist = 22 + 24 * out_cubic((f - G[0]) / 16)         # whip out from the surface
+    elif f < W1:
+        dist = 46 + 4 * (f - G[0] - 16) / (W1 - G[0] - 16)
+    elif f < G[1] - 11:
+        dist = 50 + 6 * (f - W1) / (G[1] - 11 - W1)
+    else:
+        dist = 56 - 44 * ((f - (G[1] - 11)) / 11) ** 2      # rush back into the planet
+    cam_key(cG, f, GC + Vector((0, -dist, 0.07 * dist)), GC + Vector((0, 0, 0.5)))
+cH = camera("Cam_H", 40)                                    # dive down from the sky to the loop pose
+for f in range(H[0], H[1] + 1):
+    k = (f - H[0]) / (H[1] - H[0])
+    off = (1 - k) ** 3
+    loc = P0 + Vector((0.0, -9.0, 26.0)) * off
+    tgt = T0 + Vector((0, 0, -0.6)) * off
+    cam_key(cH, f, loc, tgt)
+for c, (a_, _) in ((cA, A), (cB, B), (cC, C), (cD, D), (cE, E), (cF, F), (cG, G), (cH, H)):
+    m = sc.timeline_markers.new(c.name, frame=a_)
     m.camera = c
-sc.camera = c1
+sc.camera = cA
 
 # ================================================================ render settings
 r = sc.render
@@ -745,7 +1066,7 @@ sc.cycles.diffuse_bounces, sc.cycles.glossy_bounces = 2, 2
 sc.cycles.transmission_bounces, sc.cycles.transparent_max_bounces = 1, 8
 sc.cycles.caustics_reflective = sc.cycles.caustics_refractive = False
 r.use_motion_blur = True
-r.motion_blur_shutter = 0.4
+r.motion_blur_shutter = 0.5
 r.resolution_x, r.resolution_y, r.resolution_percentage = 1080, 1920, 100
 r.use_persistent_data = True
 r.image_settings.file_format = "PNG"
