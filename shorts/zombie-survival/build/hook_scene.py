@@ -83,7 +83,19 @@ cyc = run.frame_range[1] - run.frame_range[0]
 v_run = foot_speed(remy, run, *run.frame_range)
 print("run cycle", cyc, "frames; foot speed m/frame", round(v_run, 4))
 v_run = v_run * 1.15                                        # planted-foot average underestimates slightly
-nla(remy, [dict(action=run, start=-30, repeat=8)])
+r_a, r_b = run.frame_range
+rbake = bake_mix(remy, [(run, lambda f: r_a + (f + 29) % (r_b - r_a)), (run, lambda f: r_a + (f + 29) % (r_b - r_a))],
+                 lambda f: 0.0, 1, 99, "Remy_hook")
+# look back over his right shoulder during the close-up (S02), on top of the run
+from mathutils import Quaternion  # noqa: E402
+for f in range(1, 100):
+    k = max(0.0, min(1.0, (f - 46) / 10)) * (1 - max(0.0, min(1.0, (f - 84) / 10)))
+    k = k * k * (3 - 2 * k)
+    sc.frame_set(f)
+    for bn, ang in (("mixamorig:Neck", -0.45), ("mixamorig:Head", -0.6), ("mixamorig:Spine2", -0.18)):
+        pb = remy.pose.bones[bn]
+        pb.rotation_quaternion = pb.rotation_quaternion @ Quaternion((0, 1, 0), ang * k)
+        pb.keyframe_insert("rotation_quaternion", frame=f)
 # orange backpack (hero colour)
 bpm_ = bpy.data.materials.new("Backpack")
 b = next(n for n in bpm_.node_tree.nodes if n.type == "BSDF_PRINCIPLED")
@@ -152,10 +164,10 @@ for f in range(1, 100):
     if f <= 39:                       # S01: low, close, slight shake
         k = (f - 1) / 38
         loc = rl + Vector((0.85 - 0.15 * k, -2.15 - 0.4 * k, 0.48)) + Vector((0.012 * math.sin(f * 2.1), 0, 0.01 * math.sin(f * 3.3)))
-        tgt = rl + Vector((0.12, 0.45, 0.78))
+        tgt = rl + Vector((0.12, 0.45, 1.02))
     else:                             # S02: CU over his shoulder region, handheld, looking back past him
-        loc = rl + Vector((0.55, -1.05, 1.55)) + Vector((0.01 * math.sin(f * 2.7), 0, 0.008 * math.sin(f * 3.9)))
-        tgt = rl + Vector((-0.1, 0.4, 1.45))
+        loc = rl + Vector((-0.55, -1.25, 1.5)) + Vector((0.01 * math.sin(f * 2.7), 0, 0.008 * math.sin(f * 3.9)))
+        tgt = rl + Vector((0.25, 0.6, 1.25))
     cam.location = loc
     cam.rotation_euler = (tgt - loc).to_track_quat("-Z", "Y").to_euler()
     cam.keyframe_insert("location", frame=f)
