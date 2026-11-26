@@ -12,3 +12,5 @@ shorts/*/assets/*.fbx
 shorts/*/assets/textures/
 shorts/*/assets/*.geojson
 shorts/*/build/*.png
+shorts/zombie-survival/frames/
+shorts/zombie-survival/build/prev/
