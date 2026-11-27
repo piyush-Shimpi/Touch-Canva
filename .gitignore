@@ -22,3 +22,9 @@ shorts/zombie-survival/assets/*.png
 shorts/zombie-survival/output/*.tmp.mp4
 shorts/zombie-survival/qa/
 shorts/zombie-survival/output/*.mp4
+shorts/zombie-choices/frames/
+shorts/zombie-choices/build/prev/
+shorts/zombie-choices/audio/*.wav
+shorts/zombie-choices/build/*.blend*
+shorts/zombie-choices/build/*.log
+shorts/zombie-choices/output/*.tmp.mp4

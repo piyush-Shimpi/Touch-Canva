@@ -1,0 +1,37 @@
+[
+ {
+  "i": 0,
+  "text": "Zombies outside your door. What do you do?",
+  "dur": 2.39
+ },
+ {
+  "i": 1,
+  "text": "Stay home? Most homes have food for about three days.",
+  "dur": 3.22
+ },
+ {
+  "i": 2,
+  "text": "After three weeks without food, you're too weak to run.",
+  "dur": 2.961
+ },
+ {
+  "i": 3,
+  "text": "Dig a bunker? Hard soil takes about a day per cubic meter.",
+  "dur": 3.522
+ },
+ {
+  "i": 4,
+  "text": "Too slow.",
+  "dur": 0.738
+ },
+ {
+  "i": 5,
+  "text": "Real answer: water first. Three days without it, and you're done.",
+  "dur": 3.891
+ },
+ {
+  "i": 6,
+  "text": "So the second you hear",
+  "dur": 1.116
+ }
+]
