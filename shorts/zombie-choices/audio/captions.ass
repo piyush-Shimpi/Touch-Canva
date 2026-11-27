@@ -1,0 +1,53 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Top,Inter Display Black,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,2,0,1,11,5,5,40,40,0,1
+Style: Cap,Inter Display Black,84,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,0,0,1,9,4,5,60,60,0,1
+Style: Choice,Inter Display Black,72,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,1,0,1,9,4,5,40,40,0,1
+Style: Hud,Inter Display Black,88,&H0000D4FF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,1,0,1,10,5,5,40,40,0,1
+Style: Stamp,Inter Display Black,420,&H002A2AFF,&H00FFFFFF,&H00FFFFFF,&H80000000,-1,0,0,0,100,100,0,0,1,14,0,5,40,40,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 2,0:00:00.00,0:00:01.30,Top,,0,0,0,,{\pos(510,300)}YOUR {\c&H00D4FF&}MOVE?
+Dialogue: 1,0:00:01.30,0:00:02.50,Choice,,0,0,0,,{\pos(510,255)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}STAY · DIG · {\c&H00D4FF&}?
+Dialogue: 1,0:00:02.50,0:00:08.60,Choice,,0,0,0,,{\pos(510,255)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}A{\c&HFFFFFF&} · STAY HOME
+Dialogue: 1,0:00:08.60,0:00:12.90,Choice,,0,0,0,,{\pos(510,255)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}B{\c&HFFFFFF&} · DIG
+Dialogue: 1,0:00:12.90,0:00:17.20,Choice,,0,0,0,,{\pos(510,255)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}C{\c&HFFFFFF&} · {\c&HFFB13A&}WATER
+Dialogue: 1,0:00:04.13,0:00:05.60,Hud,,0,0,0,,{\pos(510,380)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}~3 DAYS
+Dialogue: 1,0:00:05.97,0:00:07.20,Hud,,0,0,0,,{\pos(510,380)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}DAY 21
+Dialogue: 1,0:00:10.13,0:00:11.20,Hud,,0,0,0,,{\pos(510,380)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}~1 DAY PER M³
+Dialogue: 1,0:00:14.63,0:00:15.80,Hud,,0,0,0,,{\pos(510,380)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&HFFB13A&}3 DAYS{\c&HFFFFFF&} MAX
+Dialogue: 3,0:00:07.37,0:00:08.60,Stamp,,0,0,0,,{\pos(540,880)\fscx160\fscy160\t(0,110,\fscx100\fscy100)\frz-8}✗
+Dialogue: 3,0:00:12.47,0:00:12.90,Stamp,,0,0,0,,{\pos(540,880)\fscx160\fscy160\t(0,110,\fscx100\fscy100)\frz-8}✗
+Dialogue: 2,0:00:20.53,0:00:22.00,Top,,0,0,0,,{\pos(510,300)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}A{\c&HFFFFFF&}, {\c&H00D4FF&}B{\c&HFFFFFF&} OR {\c&H00D4FF&}C{\c&HFFFFFF&}?
+Dialogue: 0,0:00:01.39,0:00:01.97,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}WHAT DO YOU
+Dialogue: 0,0:00:01.97,0:00:02.47,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}DO?
+Dialogue: 0,0:00:02.52,0:00:03.26,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}STAY{\c&HFFFFFF&} {\c&H00D4FF&}HOME?{\c&HFFFFFF&}
+Dialogue: 0,0:00:03.26,0:00:03.82,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}MOST HOMES
+Dialogue: 0,0:00:03.82,0:00:04.56,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}HAVE FOOD FOR
+Dialogue: 0,0:00:04.56,0:00:05.16,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}ABOUT {\c&H00D4FF&}THREE{\c&HFFFFFF&}
+Dialogue: 0,0:00:05.16,0:00:05.79,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}DAYS.{\c&HFFFFFF&}
+Dialogue: 0,0:00:05.84,0:00:06.39,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}AFTER {\c&H00D4FF&}THREE{\c&HFFFFFF&}
+Dialogue: 0,0:00:06.39,0:00:07.02,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}WEEKS{\c&HFFFFFF&} WITHOUT
+Dialogue: 0,0:00:07.02,0:00:07.45,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}FOOD,
+Dialogue: 0,0:00:07.45,0:00:08.15,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}YOU'RE TOO {\c&H00D4FF&}WEAK{\c&HFFFFFF&}
+Dialogue: 0,0:00:08.15,0:00:08.85,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}TO RUN.
+Dialogue: 0,0:00:08.90,0:00:09.81,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}DIG{\c&HFFFFFF&} A {\c&H00D4FF&}BUNKER?{\c&HFFFFFF&}
+Dialogue: 0,0:00:09.81,0:00:10.63,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}HARD SOIL TAKES
+Dialogue: 0,0:00:10.63,0:00:11.28,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}ABOUT A {\c&H00D4FF&}DAY{\c&HFFFFFF&}
+Dialogue: 0,0:00:11.28,0:00:12.47,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}PER CUBIC METER.
+Dialogue: 0,0:00:12.52,0:00:13.31,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}TOO {\c&H00D4FF&}SLOW.{\c&HFFFFFF&}
+Dialogue: 0,0:00:13.36,0:00:14.14,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}REAL ANSWER:
+Dialogue: 0,0:00:14.14,0:00:14.93,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}WATER{\c&HFFFFFF&} {\c&H00D4FF&}FIRST.{\c&HFFFFFF&}
+Dialogue: 0,0:00:14.93,0:00:15.46,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}THREE{\c&HFFFFFF&} DAYS
+Dialogue: 0,0:00:15.46,0:00:16.20,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}WITHOUT IT,
+Dialogue: 0,0:00:16.20,0:00:17.30,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}AND YOU'RE {\c&H00D4FF&}DONE.{\c&HFFFFFF&}
+Dialogue: 0,0:00:20.48,0:00:20.82,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}WHICH ONE
+Dialogue: 0,0:00:20.82,0:00:21.46,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}WOULD YOU {\c&H00D4FF&}PICK,{\c&HFFFFFF&}
+Dialogue: 0,0:00:21.46,0:00:22.00,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}WHEN YOU HEAR

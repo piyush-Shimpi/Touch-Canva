@@ -9,7 +9,7 @@ LINES = [
     "Dig a bunker? Hard soil takes about a day per cubic meter.",
     "Too slow.",
     "Real answer: water first. Three days without it, and you're done.",
-    "So the second you hear",
+    "Which one would you pick, when you hear",
 ]
 speed = float(sys.argv[1]) if len(sys.argv) > 1 else 1.12
 k = Kokoro("/opt/tts/kokoro-v1.0.onnx", "/opt/tts/voices-v1.0.bin")

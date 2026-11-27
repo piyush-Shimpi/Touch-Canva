@@ -20,7 +20,7 @@ FPS = 30
 bpy.ops.wm.read_factory_settings(use_empty=True)
 sc = bpy.context.scene
 sc.render.fps = FPS
-sc.frame_start, sc.frame_end = -20, 81
+sc.frame_start, sc.frame_end = -41, 610
 
 
 def mat(name, color, rough=0.5, **kw):
@@ -156,6 +156,9 @@ CH_Z = 1.42
 
 def door_angle(f):
     """0 = closed. Bursts to the chain limit on frame 1 with overshoot; second slam around frame 22"""
+    if f >= 560:                                      # PEAK: chain snaps, door flies open
+        u = f - 560
+        return -math.radians(min(100.0, 18.0 + 82.0 * (1 - math.exp(-u * 0.7))) + (6.0 * math.exp(-u * 0.25) * math.sin(u * 1.4) if u > 4 else 0))
     if f < -6:
         return math.radians(1.0 * abs(math.sin(f * 1.7)))
     if f < 1:
@@ -168,7 +171,7 @@ def door_angle(f):
     return -math.radians(base)
 
 
-for f in range(-20, 82):
+for f in list(range(-41, 100)) + list(range(540, 611)):
     a = door_angle(f)
     hinge.rotation_euler = (0, 0, a)
     hinge.keyframe_insert("rotation_euler", frame=f)
@@ -216,7 +219,7 @@ z_root.location = (DW / 2 - 0.26, 0.40, 0)               # behind the door; its 
 z_root.rotation_euler.z = 0.0                           # faces -y, into the house
 r0, r1 = z_run.frame_range
 bake_mix(zom, [(z_run, lambda f: r0 + (f * 0.6) % (r1 - r0)), (z_run, lambda f: r0 + (f * 0.6) % (r1 - r0))],
-         lambda f: 0.0, -20, 81, "DoorZombie_base")
+         lambda f: 0.0, -41, 81, "DoorZombie_base")
 pb = zom.pose.bones
 
 
@@ -239,7 +242,7 @@ def aim(arm, bone, child, target):
 
 
 GAP = Vector((DW / 2 - 0.02, -0.12, 1.3))             # just inside the chain gap
-for f in range(-20, 82):
+for f in range(-41, 82):
     sc.frame_set(f)
     # thrust: hand rockets through the gap on frame 1, claws and gropes after
     if f < 1:
@@ -270,7 +273,7 @@ terr = load_action(os.path.join(ANIM, "reactions", "terrified_leonard.fbx"), ("m
 # flinch on the burst, then straightens up (clip played back) while deciding
 bake_mix(remy, [(terr, lambda f: 14 + max(0, f) * 1.1 if f < 40 else max(20.0, 58 - (f - 40) * 0.9)),
                 (terr, lambda f: 14 + max(0, f) * 1.1 if f < 40 else max(20.0, 58 - (f - 40) * 0.9))],
-         lambda f: 0.0, -20, 81, "Remy_flinch")
+         lambda f: 0.0, -41, 81, "Remy_flinch")
 for f in range(40, 82):                                  # S02: glances left, right (deciding)
     sc.frame_set(f)
     look = 0.45 * math.sin((f - 40) / 41 * math.pi * 2.0) * min(1, (f - 40) / 6)
@@ -279,7 +282,7 @@ for f in range(40, 82):                                  # S02: glances left, ri
         b.rotation_quaternion = b.rotation_quaternion @ Quaternion((0, 1, 0), look * k)
         b.keyframe_insert("rotation_quaternion", frame=f)
 remy_root.rotation_euler.z = math.radians(180)           # faces the door (+y)
-for f, y in ((-20, -1.15), (1, -1.15), (10, -1.55), (30, -1.85), (81, -2.0)):   # stumbles back on the burst
+for f, y in ((-41, -1.15), (1, -1.15), (10, -1.55), (30, -1.85), (81, -2.0)):   # stumbles back on the burst
     remy_root.location = (-0.85, y, 0)
     remy_root.keyframe_insert("location", frame=f)
 
@@ -301,10 +304,14 @@ def ck(c, f, loc, tgt):
 
 
 c1 = cam("Cam_S01", 21)                                    # low, Remy's shoulder in the foreground, the door bursting
-for f in range(-20, 41):
+for f in range(-41, 41):
     shake = Vector((0.012 * math.sin(f * 2.9), 0, 0.01 * math.sin(f * 3.7))) * (2.5 if f in range(1, 6) or f in range(22, 26) else 1.0)
     k = max(0, min(1, (f - 1) / 38))
-    ck(c1, f, Vector((0.95 - 0.05 * k, -1.25 + 0.1 * k, 1.0)) + shake, Vector((0.22, -0.15, 1.3)))
+    tgt = Vector((0.22, -0.15, 1.3))
+    if f < -24:                                         # S15: arrives on a whip pan
+        w_ = ((-24 - f) / 17) ** 2
+        tgt = tgt + Vector((-6.0 * w_, -1.5 * w_, 1.2 * w_))
+    ck(c1, f, Vector((0.95 - 0.05 * k, -1.25 + 0.1 * k, 1.0)) + shake, tgt)
 focus = link(bpy.data.objects.new("FocusRemy", None))
 c2 = cam("Cam_S02", 32, 2.8)                               # MCU of Remy deciding, door + arm soft behind him
 c2.data.dof.focus_object = focus
@@ -334,5 +341,6 @@ try:
     sc.view_settings.look = "AgX - Medium High Contrast"
 except TypeError:
     pass
+exec(open(os.path.join(HERE, "kitchen_extra.py")).read())
 bpy.ops.wm.save_as_mainfile(filepath=os.path.join(HERE, "house.blend"))
 print("saved house.blend")

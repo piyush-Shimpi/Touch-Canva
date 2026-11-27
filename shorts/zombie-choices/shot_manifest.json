@@ -1,0 +1,561 @@
+{
+ "shots": [
+  {
+   "id": "S01",
+   "start": 0.0,
+   "end": 1.3,
+   "type": "MEDIUM",
+   "beat": "hook",
+   "subjects": [
+    [
+     420,
+     640,
+     420,
+     700
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "overlay",
+     "text": "YOUR MOVE?",
+     "box": [
+      183,
+      245,
+      654,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S02",
+   "start": 1.3,
+   "end": 2.5,
+   "type": "MCU",
+   "beat": "build",
+   "subjects": [
+    [
+     260,
+     380,
+     600,
+     700
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "hud",
+     "text": "STAY \u00b7 DIG \u00b7 ?",
+     "box": [
+      275,
+      210,
+      470,
+      90
+     ]
+    },
+    {
+     "kind": "caption",
+     "text": "WHAT DO YOU",
+     "box": [
+      204,
+      1333,
+      613,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S03",
+   "start": 2.5,
+   "end": 3.933,
+   "type": "MEDIUM",
+   "beat": "build",
+   "subjects": [
+    [
+     60,
+     420,
+     700,
+     900
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "hud",
+     "text": "A \u00b7 STAY HOME",
+     "box": [
+      239,
+      210,
+      543,
+      90
+     ]
+    },
+    {
+     "kind": "caption",
+     "text": "STAY HOME?",
+     "box": [
+      229,
+      1333,
+      563,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S04",
+   "start": 3.933,
+   "end": 5.6,
+   "type": "CU",
+   "beat": "build",
+   "subjects": [
+    [
+     0,
+     300,
+     1080,
+     900
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "hud",
+     "text": "A \u00b7 STAY HOME",
+     "box": [
+      239,
+      210,
+      543,
+      90
+     ]
+    },
+    {
+     "kind": "hud",
+     "text": "~3 DAYS",
+     "box": [
+      313,
+      328,
+      394,
+      104
+     ]
+    },
+    {
+     "kind": "caption",
+     "text": "ABOUT THREE",
+     "box": [
+      205,
+      1333,
+      611,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S05",
+   "start": 5.6,
+   "end": 7.2,
+   "type": "TOPDOWN",
+   "beat": "build",
+   "subjects": [
+    [
+     300,
+     420,
+     600,
+     900
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "hud",
+     "text": "A \u00b7 STAY HOME",
+     "box": [
+      239,
+      210,
+      543,
+      90
+     ]
+    },
+    {
+     "kind": "hud",
+     "text": "DAY 21",
+     "box": [
+      355,
+      328,
+      310,
+      104
+     ]
+    },
+    {
+     "kind": "caption",
+     "text": "WEEKS WITHOUT",
+     "box": [
+      136,
+      1333,
+      749,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S06",
+   "start": 7.2,
+   "end": 8.6,
+   "type": "CU",
+   "beat": "build",
+   "subjects": [
+    [
+     200,
+     420,
+     700,
+     800
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "hud",
+     "text": "A \u00b7 STAY HOME",
+     "box": [
+      239,
+      210,
+      543,
+      90
+     ]
+    },
+    {
+     "kind": "label",
+     "text": "\u2717",
+     "box": [
+      348,
+      670,
+      385,
+      420
+     ]
+    },
+    {
+     "kind": "caption",
+     "text": "YOU'RE TOO WEAK",
+     "box": [
+      106,
+      1333,
+      808,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S07",
+   "start": 8.6,
+   "end": 10.0,
+   "type": "MEDIUM",
+   "beat": "build",
+   "subjects": [
+    [
+     150,
+     540,
+     700,
+     700
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "hud",
+     "text": "B \u00b7 DIG",
+     "box": [
+      391,
+      210,
+      239,
+      90
+     ]
+    },
+    {
+     "kind": "caption",
+     "text": "DIG A BUNKER?",
+     "box": [
+      181,
+      1333,
+      659,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S08",
+   "start": 10.0,
+   "end": 11.2,
+   "type": "CU",
+   "beat": "build",
+   "subjects": [
+    [
+     200,
+     420,
+     700,
+     800
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "hud",
+     "text": "B \u00b7 DIG",
+     "box": [
+      391,
+      210,
+      239,
+      90
+     ]
+    },
+    {
+     "kind": "hud",
+     "text": "~1 DAY PER M\u00b3",
+     "box": [
+      193,
+      328,
+      635,
+      104
+     ]
+    },
+    {
+     "kind": "caption",
+     "text": "HARD SOIL TAKES",
+     "box": [
+      126,
+      1333,
+      768,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S09",
+   "start": 11.2,
+   "end": 12.9,
+   "type": "WIDE",
+   "beat": "build",
+   "subjects": [
+    [
+     0,
+     480,
+     1080,
+     700
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "hud",
+     "text": "B \u00b7 DIG",
+     "box": [
+      391,
+      210,
+      239,
+      90
+     ]
+    },
+    {
+     "kind": "caption",
+     "text": "PER CUBIC METER",
+     "box": [
+      125,
+      1333,
+      771,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S10",
+   "start": 12.9,
+   "end": 14.4,
+   "type": "CU",
+   "beat": "build",
+   "subjects": [
+    [
+     300,
+     440,
+     500,
+     800
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "hud",
+     "text": "C \u00b7 WATER",
+     "box": [
+      323,
+      210,
+      375,
+      90
+     ]
+    },
+    {
+     "kind": "caption",
+     "text": "REAL ANSWER",
+     "box": [
+      191,
+      1333,
+      638,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S11",
+   "start": 14.4,
+   "end": 15.8,
+   "type": "MCU",
+   "beat": "build",
+   "subjects": [
+    [
+     300,
+     440,
+     500,
+     800
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "hud",
+     "text": "C \u00b7 WATER",
+     "box": [
+      323,
+      210,
+      375,
+      90
+     ]
+    },
+    {
+     "kind": "hud",
+     "text": "3 DAYS MAX",
+     "box": [
+      228,
+      328,
+      564,
+      104
+     ]
+    },
+    {
+     "kind": "caption",
+     "text": "THREE DAYS",
+     "box": [
+      238,
+      1333,
+      545,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S12",
+   "start": 15.8,
+   "end": 17.2,
+   "type": "WIDE",
+   "beat": "peak",
+   "subjects": [
+    [
+     250,
+     420,
+     600,
+     800
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "hud",
+     "text": "C \u00b7 WATER",
+     "box": [
+      323,
+      210,
+      375,
+      90
+     ]
+    },
+    {
+     "kind": "caption",
+     "text": "AND YOU'RE DONE",
+     "box": [
+      116,
+      1333,
+      788,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S13",
+   "start": 17.2,
+   "end": 18.8,
+   "type": "MEDIUM",
+   "beat": "build",
+   "subjects": [
+    [
+     200,
+     520,
+     500,
+     700
+    ]
+   ],
+   "texts": []
+  },
+  {
+   "id": "S14",
+   "start": 18.8,
+   "end": 20.6,
+   "type": "CU",
+   "beat": "payoff",
+   "subjects": [
+    [
+     200,
+     420,
+     700,
+     800
+    ]
+   ],
+   "texts": []
+  },
+  {
+   "id": "S15",
+   "start": 20.6,
+   "end": 22.0,
+   "type": "MEDIUM",
+   "beat": "loop",
+   "subjects": [
+    [
+     420,
+     640,
+     420,
+     700
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "overlay",
+     "text": "A, B OR C?",
+     "box": [
+      263,
+      245,
+      494,
+      110
+     ]
+    },
+    {
+     "kind": "caption",
+     "text": "WOULD YOU PICK",
+     "box": [
+      137,
+      1333,
+      746,
+      104
+     ]
+    }
+   ]
+  }
+ ],
+ "narration": {
+  "first_word_start": 0.0,
+  "last_word_end": 22.0
+ }
+}
