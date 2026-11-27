@@ -222,6 +222,11 @@ for f in range(64, 145, 2):
     k = ease((f - 64) / 80)
     a = math.radians(-35 + 25 * k)
     ck(c4, f, C + Vector((3.6 * math.sin(a), -3.6 * math.cos(a), 2.6)), C + Vector((0.2, 0.3, 0)))
+c4b = cam("Cam_S04b", 32)                                   # second angle: East Coast lighting up
+EC = ll(-77.5, 39.5)
+for f in range(104, 145, 2):
+    k = ease((f - 104) / 40)
+    ck(c4b, f, EC + Vector((1.2 - 0.4 * k, -2.0 + 0.3 * k, 1.5 - 0.3 * k)), EC + Vector((-0.2, 0.3, 0)))
 c10 = cam("Cam_S10", 30)                                    # follows the route to the Rockies
 for f in range(200, 248, 2):
     k = ease((f - 200) / 47)

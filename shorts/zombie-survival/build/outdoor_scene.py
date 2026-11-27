@@ -435,7 +435,7 @@ else:
         y = 6.0 - v * 0.75 * (f + 10)
         p = Vector((0.3, y, hz(0.3, y)))
         cx, cy = p.x + 2.6, p.y - 4.2
-        ck(c11, f, Vector((cx, cy, hz(cx, cy) + 1.25)), p + Vector((-0.6, 0.6, 1.2)))
+        ck(c11, f, Vector((cx, cy, hz(cx, cy) + 1.6)), p + Vector((-0.6, 0.6, 0.15)))
     c13 = cam("Cam_S13", 40)                                  # CU at the summit, looking past him down the valley
     for f in range(56, 86):
         k = sm((f - 56) / 29)

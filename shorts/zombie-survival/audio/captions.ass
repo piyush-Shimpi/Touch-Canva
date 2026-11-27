@@ -6,24 +6,28 @@ WrapStyle: 2
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Top,Inter Display Black,108,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,2,0,1,11,5,5,40,40,0,1
-Style: Cap,Inter Display Black,92,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,0,0,1,9,4,5,60,60,0,1
-Style: Hud,Inter Display Black,104,&H0000D4FF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,1,0,1,10,5,5,40,40,0,1
+Style: Top,Inter Display Black,84,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,2,0,1,11,5,5,40,40,0,1
+Style: Cap,Inter Display Black,84,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,0,0,1,9,4,5,60,60,0,1
+Style: Hud,Inter Display Black,96,&H0000D4FF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,1,0,1,10,5,5,40,40,0,1
 Style: Label,Inter Display Black,80,&H006AFF2B,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,1,0,1,9,4,5,40,40,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 2,0:00:00.00,0:00:01.30,Top,,0,0,0,,{\pos(510,250)}ZOMBIE {\c&H00D4FF&}OUTBREAK
-Dialogue: 0,0:00:01.30,0:00:02.21,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}ACCORDING TO {\c&H00D4FF&}REAL{\c&HFFFFFF&}
-Dialogue: 0,0:00:02.21,0:00:03.15,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}SCIENTISTS.
-Dialogue: 0,0:00:03.20,0:00:04.53,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}CORNELL{\c&HFFFFFF&} RESEARCHERS
-Dialogue: 0,0:00:04.53,0:00:05.99,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}SIMULATED ONE ACROSS
-Dialogue: 0,0:00:05.99,0:00:07.96,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}307{\c&HFFFFFF&} {\c&H00D4FF&}MILLION{\c&HFFFFFF&} AMERICANS.
+Dialogue: 2,0:00:00.00,0:00:01.30,Top,,0,0,0,,{\pos(510,290)}ZOMBIE {\c&H00D4FF&}OUTBREAK
+Dialogue: 0,0:00:01.30,0:00:01.93,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}ACCORDING TO
+Dialogue: 0,0:00:01.93,0:00:03.15,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}REAL{\c&HFFFFFF&} SCIENTISTS.
+Dialogue: 0,0:00:03.20,0:00:03.74,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}CORNELL{\c&HFFFFFF&}
+Dialogue: 0,0:00:03.74,0:00:04.53,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}RESEARCHERS
+Dialogue: 0,0:00:04.53,0:00:05.50,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}SIMULATED ONE
+Dialogue: 0,0:00:05.50,0:00:06.29,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}ACROSS {\c&H00D4FF&}307{\c&HFFFFFF&}
+Dialogue: 0,0:00:06.29,0:00:06.84,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}MILLION{\c&HFFFFFF&}
+Dialogue: 0,0:00:06.84,0:00:07.96,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}AMERICANS.
 Dialogue: 0,0:00:08.01,0:00:08.75,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}BIG {\c&H00D4FF&}CITIES{\c&HFFFFFF&} FELL
 Dialogue: 0,0:00:08.75,0:00:09.49,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}IN {\c&H00D4FF&}DAYS.{\c&HFFFFFF&}
 Dialogue: 0,0:00:09.54,0:00:10.15,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}STEP ONE:
 Dialogue: 0,0:00:10.15,0:00:10.72,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}GET{\c&HFFFFFF&} {\c&H00D4FF&}OUT.{\c&HFFFFFF&}
-Dialogue: 0,0:00:10.72,0:00:11.90,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}DON'T HIDE DOWNTOWN.
+Dialogue: 0,0:00:10.72,0:00:11.18,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}DON'T HIDE
+Dialogue: 0,0:00:11.18,0:00:11.90,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}DOWNTOWN.
 Dialogue: 0,0:00:11.95,0:00:12.55,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}STEP TWO:
 Dialogue: 0,0:00:12.55,0:00:13.19,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}PACK A {\c&H00D4FF&}GALLON{\c&HFFFFFF&}
 Dialogue: 0,0:00:13.19,0:00:13.79,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}OF WATER PER
@@ -32,13 +36,16 @@ Dialogue: 0,0:00:14.28,0:00:14.99,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(
 Dialogue: 0,0:00:15.04,0:00:15.61,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}STEP THREE:
 Dialogue: 0,0:00:15.61,0:00:16.11,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}HEAD FOR THE
 Dialogue: 0,0:00:16.11,0:00:16.63,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}HILLS.{\c&HFFFFFF&}
-Dialogue: 0,0:00:16.68,0:00:17.59,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}ZOMBIES TOOK {\c&H00D4FF&}MONTHS{\c&HFFFFFF&}
-Dialogue: 0,0:00:17.59,0:00:18.22,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}TO REACH THE
-Dialogue: 0,0:00:18.22,0:00:19.32,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}NORTHERN {\c&H00D4FF&}ROCKIES.{\c&HFFFFFF&}
-Dialogue: 0,0:00:20.50,0:00:21.19,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THAT'S HOW YOU'D
-Dialogue: 0,0:00:21.19,0:00:22.00,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}LAST {\c&H00D4FF&}LONGEST{\c&HFFFFFF&} IN
+Dialogue: 0,0:00:16.68,0:00:17.28,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}ZOMBIES TOOK
+Dialogue: 0,0:00:17.28,0:00:17.75,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}MONTHS{\c&HFFFFFF&} TO
+Dialogue: 0,0:00:17.75,0:00:18.22,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}REACH THE
+Dialogue: 0,0:00:18.22,0:00:18.62,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}NORTHERN
+Dialogue: 0,0:00:18.62,0:00:19.32,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}ROCKIES.{\c&HFFFFFF&}
+Dialogue: 0,0:00:20.50,0:00:20.96,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THAT'S HOW
+Dialogue: 0,0:00:20.96,0:00:21.43,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}YOU'D LAST
+Dialogue: 0,0:00:21.43,0:00:22.00,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}LONGEST{\c&HFFFFFF&} IN
 Dialogue: 1,0:00:03.10,0:00:07.90,Hud,,0,0,0,,{\pos(510,360)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}CORNELL SIM
 Dialogue: 1,0:00:08.30,0:00:09.50,Hud,,0,0,0,,{\pos(510,360)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}DAY 3
 Dialogue: 1,0:00:12.17,0:00:13.40,Hud,,0,0,0,,{\pos(510,360)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}1 GALLON/DAY
-Dialogue: 1,0:00:18.30,0:00:19.20,Hud,,0,0,0,,{\pos(510,360)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}MONTH 4 (EST.)
+Dialogue: 1,0:00:18.30,0:00:19.20,Hud,,0,0,0,,{\pos(510,360)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}~MONTH 4
 Dialogue: 1,0:00:18.40,0:00:19.20,Label,,0,0,0,,{\pos(510,820)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}SAFEST

@@ -144,5 +144,5 @@ for f in range(308, 344):
     sc.frame_set(f)
     head = sr_arm.matrix_world @ sr_arm.pose.bones["mixamorig:Head"].head
     fwd = Vector((math.cos(math.radians(-115 - 90)), math.sin(math.radians(-115 - 90)), 0))
-    ck(c7, f, head + fwd * (0.95 - 0.25 * k) + Vector((0.05, 0, 0.02)), head + Vector((0, 0, -0.02)))
+    ck(c7, f, head + fwd * (1.05 - 0.2 * k) + Vector((0.05, 0, 0.04)), head + Vector((0, 0, -0.11)))
 print("city extras: crowd", len(crowd))

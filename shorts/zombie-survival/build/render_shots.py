@@ -7,6 +7,7 @@ bpy.ops.wm.open_mainfile(filepath=os.path.join(os.path.dirname(os.path.abspath(_
 sc = bpy.context.scene
 sc.render.resolution_percentage = pct
 sc.cycles.samples = spp
+sc.view_settings.exposure = float(os.environ.get("EXPOSURE", sc.view_settings.exposure))
 sc.timeline_markers.clear()
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frames")
 for spec in a[3:]:

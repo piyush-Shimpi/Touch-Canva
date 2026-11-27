@@ -9,15 +9,15 @@
    "subjects": [
     [
      60,
-     520,
-     560,
-     1300
+     280,
+     500,
+     760
     ],
     [
-     430,
-     1000,
-     460,
-     800
+     330,
+     900,
+     450,
+     560
     ]
    ],
    "texts": [
@@ -25,10 +25,10 @@
      "kind": "overlay",
      "text": "ZOMBIE OUTBREAK",
      "box": [
-      8,
-      190,
-      1004,
-      120
+      97,
+      238,
+      827,
+      104
      ]
     }
    ]
@@ -41,21 +41,21 @@
    "beat": "build",
    "subjects": [
     [
-     180,
-     760,
-     880,
-     1160
+     300,
+     480,
+     560,
+     700
     ]
    ],
    "texts": [
     {
      "kind": "caption",
-     "text": "ACCORDING TO REAL",
+     "text": "REAL SCIENTISTS",
      "box": [
-      26,
-      1330,
-      969,
-      110
+      128,
+      1333,
+      765,
+      104
      ]
     }
    ]
@@ -63,89 +63,126 @@
   {
    "id": "S03",
    "start": 3.1,
-   "end": 5.2,
+   "end": 5.1,
    "type": "TOPDOWN",
    "beat": "build",
    "subjects": [
     [
      0,
-     520,
+     560,
      1080,
-     900
+     660
     ]
    ],
    "texts": [
     {
      "kind": "caption",
-     "text": "CORNELL RESEARCHERS",
+     "text": "RESEARCHERS",
      "box": [
-      -31,
-      1330,
-      1083,
-      110
+      185,
+      1333,
+      650,
+      104
      ]
     },
     {
      "kind": "hud",
      "text": "CORNELL SIM",
      "box": [
-      156,
-      300,
-      709,
-      120
+      176,
+      304,
+      668,
+      112
      ]
     }
    ]
   },
   {
    "id": "S04",
-   "start": 5.2,
-   "end": 7.9,
+   "start": 5.1,
+   "end": 6.533,
    "type": "WIDE",
    "beat": "build",
    "subjects": [
     [
      0,
-     700,
+     640,
      1080,
-     700
+     580
     ]
    ],
    "texts": [
     {
      "kind": "caption",
-     "text": "307 MILLION AMERICANS",
+     "text": "ACROSS 307",
      "box": [
-      -88,
-      1330,
-      1197,
-      110
+      236,
+      1333,
+      549,
+      104
      ]
     },
     {
      "kind": "hud",
      "text": "CORNELL SIM",
      "box": [
-      156,
-      300,
-      709,
-      120
+      176,
+      304,
+      668,
+      112
      ]
     }
    ]
   },
   {
    "id": "S05",
+   "start": 6.533,
+   "end": 7.9,
+   "type": "WIDE",
+   "beat": "build",
+   "subjects": [
+    [
+     0,
+     640,
+     1080,
+     600
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "AMERICANS",
+     "box": [
+      241,
+      1333,
+      538,
+      104
+     ]
+    },
+    {
+     "kind": "hud",
+     "text": "CORNELL SIM",
+     "box": [
+      176,
+      304,
+      668,
+      112
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S06",
    "start": 7.9,
    "end": 9.5,
    "type": "WIDE",
    "beat": "build",
    "subjects": [
     [
-     60,
-     920,
+     40,
+     760,
      1000,
-     560
+     480
     ]
    ],
    "texts": [
@@ -153,36 +190,36 @@
      "kind": "caption",
      "text": "BIG CITIES FELL",
      "box": [
-      83,
-      1330,
-      855,
-      110
+      176,
+      1333,
+      668,
+      104
      ]
     },
     {
      "kind": "hud",
      "text": "DAY 3",
      "box": [
-      349,
-      300,
-      322,
-      120
+      362,
+      304,
+      297,
+      112
      ]
     }
    ]
   },
   {
-   "id": "S06",
+   "id": "S07",
    "start": 9.5,
    "end": 10.8,
    "type": "MEDIUM",
    "beat": "build",
    "subjects": [
     [
+     300,
      280,
-     460,
-     520,
-     1150
+     450,
+     940
     ]
    ],
    "texts": [
@@ -190,53 +227,53 @@
      "kind": "caption",
      "text": "GET OUT",
      "box": [
-      311,
-      1330,
-      399,
-      110
-     ]
-    }
-   ]
-  },
-  {
-   "id": "S07",
-   "start": 10.8,
-   "end": 11.9,
-   "type": "ECU",
-   "beat": "build",
-   "subjects": [
-    [
-     0,
-     0,
-     1080,
-     1920
-    ]
-   ],
-   "texts": [
-    {
-     "kind": "caption",
-     "text": "DON'T HIDE DOWNTOWN",
-     "box": [
-      -31,
-      1330,
-      1083,
-      110
+      318,
+      1333,
+      384,
+      104
      ]
     }
    ]
   },
   {
    "id": "S08",
+   "start": 10.8,
+   "end": 11.9,
+   "type": "ECU",
+   "beat": "build",
+   "subjects": [
+    [
+     150,
+     240,
+     780,
+     1000
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "DOWNTOWN",
+     "box": [
+      235,
+      1333,
+      551,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S09",
    "start": 11.9,
    "end": 13.4,
    "type": "ECU",
    "beat": "build",
    "subjects": [
     [
-     60,
+     150,
      300,
-     960,
-     1250
+     780,
+     900
     ]
    ],
    "texts": [
@@ -244,36 +281,36 @@
      "kind": "caption",
      "text": "PACK A GALLON",
      "box": [
-      140,
-      1330,
-      741,
-      110
+      166,
+      1333,
+      688,
+      104
      ]
     },
     {
      "kind": "hud",
      "text": "1 GALLON/DAY",
      "box": [
-      124,
-      300,
-      773,
-      120
+      158,
+      304,
+      704,
+      112
      ]
     }
    ]
   },
   {
-   "id": "S09",
+   "id": "S10",
    "start": 13.4,
    "end": 15.0,
    "type": "MCU",
    "beat": "build",
    "subjects": [
     [
-     240,
-     520,
-     520,
-     1250
+     300,
+     500,
+     420,
+     740
     ]
    ],
    "texts": [
@@ -281,16 +318,16 @@
      "kind": "caption",
      "text": "PERSON",
      "box": [
-      339,
-      1330,
-      342,
-      110
+      327,
+      1333,
+      367,
+      104
      ]
     }
    ]
   },
   {
-   "id": "S10",
+   "id": "S11",
    "start": 15.0,
    "end": 16.6,
    "type": "WIDE",
@@ -298,9 +335,9 @@
    "subjects": [
     [
      0,
-     780,
+     480,
      1080,
-     900
+     740
     ]
    ],
    "texts": [
@@ -308,43 +345,43 @@
      "kind": "caption",
      "text": "HEAD FOR THE",
      "box": [
-      168,
-      1330,
-      684,
-      110
-     ]
-    }
-   ]
-  },
-  {
-   "id": "S11",
-   "start": 16.6,
-   "end": 17.7,
-   "type": "WIDE",
-   "beat": "build",
-   "subjects": [
-    [
-     600,
-     820,
-     260,
-     640
-    ]
-   ],
-   "texts": [
-    {
-     "kind": "caption",
-     "text": "ZOMBIES TOOK MONTHS",
-     "box": [
-      -31,
-      1330,
-      1083,
-      110
+      196,
+      1333,
+      629,
+      104
      ]
     }
    ]
   },
   {
    "id": "S12",
+   "start": 16.6,
+   "end": 17.7,
+   "type": "WIDE",
+   "beat": "build",
+   "subjects": [
+    [
+     480,
+     760,
+     260,
+     470
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "ZOMBIES TOOK",
+     "box": [
+      182,
+      1333,
+      657,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S13",
    "start": 17.7,
    "end": 19.2,
    "type": "WIDE",
@@ -352,46 +389,46 @@
    "subjects": [
     [
      0,
-     980,
+     560,
      1080,
-     940
+     660
     ]
    ],
    "texts": [
     {
      "kind": "caption",
-     "text": "NORTHERN ROCKIES",
+     "text": "NORTHERN",
      "box": [
-      54,
-      1330,
-      912,
-      110
+      267,
+      1333,
+      487,
+      104
      ]
     },
     {
      "kind": "hud",
-     "text": "MONTH 4 (EST.)",
+     "text": "~MONTH 4",
      "box": [
-      59,
-      300,
-      902,
-      120
+      243,
+      304,
+      535,
+      112
      ]
     },
     {
      "kind": "label",
      "text": "SAFEST",
      "box": [
-      362,
+      340,
       772,
-      297,
+      341,
       96
      ]
     }
    ]
   },
   {
-   "id": "S13",
+   "id": "S14",
    "start": 19.2,
    "end": 20.0,
    "type": "OTS",
@@ -399,15 +436,15 @@
    "subjects": [
     [
      0,
-     1000,
+     1150,
      640,
-     920
+     600
     ]
    ],
    "texts": []
   },
   {
-   "id": "S14",
+   "id": "S15",
    "start": 20.0,
    "end": 20.9,
    "type": "LOW",
@@ -415,15 +452,15 @@
    "subjects": [
     [
      220,
-     520,
+     450,
      640,
-     1300
+     1060
     ]
    ],
    "texts": []
   },
   {
-   "id": "S15",
+   "id": "S16",
    "start": 20.9,
    "end": 22.0,
    "type": "LOW",
@@ -431,20 +468,26 @@
    "subjects": [
     [
      60,
-     520,
-     560,
-     1300
+     280,
+     500,
+     760
+    ],
+    [
+     330,
+     700,
+     450,
+     540
     ]
    ],
    "texts": [
     {
      "kind": "caption",
-     "text": "LAST LONGEST IN",
+     "text": "LONGEST IN",
      "box": [
-      83,
-      1330,
-      855,
-      110
+      250,
+      1333,
+      521,
+      104
      ]
     }
    ]

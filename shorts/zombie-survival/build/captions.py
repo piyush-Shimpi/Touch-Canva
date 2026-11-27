@@ -30,9 +30,9 @@ WrapStyle: 2
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Top,Inter Display Black,108,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,2,0,1,11,5,5,40,40,0,1
-Style: Cap,Inter Display Black,92,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,0,0,1,9,4,5,60,60,0,1
-Style: Hud,Inter Display Black,104,&H0000D4FF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,1,0,1,10,5,5,40,40,0,1
+Style: Top,Inter Display Black,84,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,2,0,1,11,5,5,40,40,0,1
+Style: Cap,Inter Display Black,84,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,0,0,1,9,4,5,60,60,0,1
+Style: Hud,Inter Display Black,96,&H0000D4FF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,1,0,1,10,5,5,40,40,0,1
 Style: Label,Inter Display Black,80,&H006AFF2B,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,1,0,1,9,4,5,40,40,0,1
 
 [Events]
@@ -47,20 +47,30 @@ def add(layer, t0, t1, style, x, y, txt, plain, kind, w, h, pop=True):
     texts.append(dict(t0=t0, t1=t1, kind=kind, text=plain, box=[x - w // 2, y - h // 2, w, h]))
 
 
+from PIL import ImageFont  # noqa: E402
+_FONTS = {}
+
+
 def width(txt, size):
-    return int(len(txt) * size * 0.62)
+    """real rendered width with the caption font (plus outline)"""
+    if size not in _FONTS:
+        _FONTS[size] = ImageFont.truetype("/usr/share/fonts/opentype/inter/InterDisplay-Black.otf", size)
+    return int(_FONTS[size].getlength(txt)) + 2 * 11
 
 
 # hook label (the only text in shot 1)
-add(2, 0.0, HOOK_END, "Top", 510, 250, "ZOMBIE " + YEL + "OUTBREAK", "ZOMBIE OUTBREAK", "overlay", width("ZOMBIE OUTBREAK", 108), 120, pop=False)
+add(2, 0.0, HOOK_END, "Top", 510, 290, "ZOMBIE " + YEL + "OUTBREAK", "ZOMBIE OUTBREAK", "overlay", width("ZOMBIE OUTBREAK", 84), 104, pop=False)
 # narration captions
 for m, at in zip(meta, VO_AT):
     words = m["text"].split()
     wts = [len(re.sub(r"\W", "", w)) + 2 + (5 if w.endswith((",", ".", ":", "!")) else 0) for w in words]
     chunks, cur = [], []
     for w, wt in zip(words, wts):
+        if cur and width(" ".join([x for x, _ in cur] + [w]).upper().strip(",.:!"), 84) > 820:
+            chunks.append(cur)
+            cur = []
         cur.append((w, wt))
-        if len(cur) == 3 or w.endswith((",", ".", ":", "!")) or (len(cur) == 2 and len(w) > 8):
+        if len(cur) == 3 or w.endswith((",", ".", ":", "!")):
             chunks.append(cur)
             cur = []
     if cur:
@@ -74,7 +84,7 @@ for m, at in zip(meta, VO_AT):
         if end > t_show + 0.05:
             plain = " ".join(w.upper().strip(",.:!") for w, _ in ch)
             txt = " ".join((YEL + w.upper() + WHT) if w.lower() in HOT else w.upper() for w, _ in ch)
-            add(0, t_show, min(end, 22.0), "Cap", 510, 1385, txt, plain, "caption", width(plain, 92), 110)
+            add(0, t_show, min(end, 22.0), "Cap", 510, 1385, txt, plain, "caption", width(plain, 84), 104)
         t += d
 
 
@@ -83,10 +93,10 @@ def T(f):
 
 
 # HUD band
-add(1, T(94), T(238), "Hud", 510, 360, "CORNELL SIM", "CORNELL SIM", "hud", width("CORNELL SIM", 104), 120)
-add(1, T(250), T(286), "Hud", 510, 360, "DAY 3", "DAY 3", "hud", width("DAY 3", 104), 120)
-add(1, T(366), T(403), "Hud", 510, 360, "1 GALLON/DAY", "1 GALLON/DAY", "hud", width("1 GALLON/DAY", 104), 120)
-add(1, T(550), T(577), "Hud", 510, 360, "MONTH 4 (EST.)", "MONTH 4 (EST.)", "hud", width("MONTH 4 (EST.)", 104), 120)
+add(1, T(94), T(238), "Hud", 510, 360, "CORNELL SIM", "CORNELL SIM", "hud", width("CORNELL SIM", 96), 112)
+add(1, T(250), T(286), "Hud", 510, 360, "DAY 3", "DAY 3", "hud", width("DAY 3", 96), 112)
+add(1, T(366), T(403), "Hud", 510, 360, "1 GALLON/DAY", "1 GALLON/DAY", "hud", width("1 GALLON/DAY", 96), 112)
+add(1, T(550), T(577), "Hud", 510, 360, "~MONTH 4", "~MONTH 4", "hud", width("~MONTH 4", 96), 112)
 add(1, T(553), T(577), "Label", 510, 820, "SAFEST", "SAFEST", "label", width("SAFEST", 80), 96)
 open(os.path.join(AUD, "captions.ass"), "w").write(head + "\n".join(ev) + "\n")
 json.dump(texts, open(os.path.join(AUD, "text_events.json"), "w"), indent=1)
