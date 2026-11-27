@@ -21,3 +21,4 @@ shorts/zombie-survival/assets/*.geojson
 shorts/zombie-survival/assets/*.png
 shorts/zombie-survival/output/*.tmp.mp4
 shorts/zombie-survival/qa/
+shorts/zombie-survival/output/*.mp4
