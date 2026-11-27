@@ -22,7 +22,7 @@ Dialogue: 1,0:00:12.90,0:00:17.20,Choice,,0,0,0,,{\pos(510,295)}{\fscx70\fscy70\
 Dialogue: 1,0:00:04.13,0:00:05.60,Hud,,0,0,0,,{\pos(510,412)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}~3 DAYS
 Dialogue: 1,0:00:05.97,0:00:07.20,Hud,,0,0,0,,{\pos(510,1235)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}DAY 21
 Dialogue: 1,0:00:10.13,0:00:11.20,Hud,,0,0,0,,{\pos(510,412)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}~1 DAY PER M³
-Dialogue: 1,0:00:14.63,0:00:15.80,Hud,,0,0,0,,{\pos(510,412)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&HFFB13A&}3 DAYS{\c&HFFFFFF&} MAX
+Dialogue: 1,0:00:14.63,0:00:15.80,Hud,,0,0,0,,{\pos(510,1225)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&HFFB13A&}3 DAYS{\c&HFFFFFF&} MAX
 Dialogue: 3,0:00:07.37,0:00:08.60,Stamp,,0,0,0,,{\pos(540,880)\fscx160\fscy160\t(0,110,\fscx100\fscy100)\frz-8}✗
 Dialogue: 3,0:00:12.47,0:00:12.90,Stamp,,0,0,0,,{\pos(540,880)\fscx160\fscy160\t(0,110,\fscx100\fscy100)\frz-8}✗
 Dialogue: 2,0:00:20.53,0:00:22.00,Top,,0,0,0,,{\pos(510,300)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}A{\c&HFFFFFF&}, {\c&H00D4FF&}B{\c&HFFFFFF&}, {\c&H00D4FF&}C{\c&HFFFFFF&}?

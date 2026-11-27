@@ -73,7 +73,7 @@ add(1, T(388), T(517), "Choice", 510, 295, YEL + "C" + WHT + " · " + BLU + "WAT
 add(1, T(125), T(169), "Hud", 510, 412, "~3 DAYS", "~3 DAYS", "hud", 88, 104)
 add(1, T(180), T(217), "Hud", 510, 1235, "DAY 21", "DAY 21", "hud", 88, 104)
 add(1, T(305), T(337), "Hud", 510, 412, "~1 DAY PER M³", "~1 DAY PER M³", "hud", 88, 104)
-add(1, T(440), T(475), "Hud", 510, 412, BLU + "3 DAYS" + WHT + " MAX", "3 DAYS MAX", "hud", 88, 104)
+add(1, T(440), T(475), "Hud", 510, 1225, BLU + "3 DAYS" + WHT + " MAX", "3 DAYS MAX", "hud", 88, 104)
 # red ✗ stamps on the wrong choices
 for f0, f1 in ((222, 259), (375, 388)):
     add(3, T(f0), T(f1), "Stamp", 540, 880, "✗", "✗", "label", 420, 420, pop=False,
