@@ -64,22 +64,22 @@ def add(layer, t0, t1, style, x, y, txt, plain, kind, size, h, pop=True, extra="
 
 # hook label (only text in shot 1), then the three options
 add(2, 0.0, HOOK_END, "Top", 510, 300, "YOUR " + YEL + "MOVE?", "YOUR MOVE?", "overlay", 96, 110, pop=False)
-add(1, HOOK_END, T(76), "Choice", 510, 255, "STAY · DIG · " + YEL + "?", "STAY · DIG · ?", "hud", 72, 90)
+add(1, HOOK_END, T(76), "Choice", 510, 295, "STAY · DIG · " + YEL + "?", "STAY · DIG · ?", "hud", 72, 90)
 # choice letters (top row of the HUD band)
-add(1, T(76), T(259), "Choice", 510, 255, YEL + "A" + WHT + " · STAY HOME", "A · STAY HOME", "hud", 72, 90)
-add(1, T(259), T(388), "Choice", 510, 255, YEL + "B" + WHT + " · DIG", "B · DIG", "hud", 72, 90)
-add(1, T(388), T(517), "Choice", 510, 255, YEL + "C" + WHT + " · " + BLU + "WATER", "C · WATER", "hud", 72, 90)
+add(1, T(76), T(259), "Choice", 510, 295, YEL + "A" + WHT + " · STAY HOME", "A · STAY HOME", "hud", 72, 90)
+add(1, T(259), T(388), "Choice", 510, 295, YEL + "B" + WHT + " · DIG", "B · DIG", "hud", 72, 90)
+add(1, T(388), T(517), "Choice", 510, 295, YEL + "C" + WHT + " · " + BLU + "WATER", "C · WATER", "hud", 72, 90)
 # data HUD (second row)
-add(1, T(125), T(169), "Hud", 510, 380, "~3 DAYS", "~3 DAYS", "hud", 88, 104)
-add(1, T(180), T(217), "Hud", 510, 380, "DAY 21", "DAY 21", "hud", 88, 104)
-add(1, T(305), T(337), "Hud", 510, 380, "~1 DAY PER M³", "~1 DAY PER M³", "hud", 88, 104)
-add(1, T(440), T(475), "Hud", 510, 380, BLU + "3 DAYS" + WHT + " MAX", "3 DAYS MAX", "hud", 88, 104)
+add(1, T(125), T(169), "Hud", 510, 412, "~3 DAYS", "~3 DAYS", "hud", 88, 104)
+add(1, T(180), T(217), "Hud", 510, 1235, "DAY 21", "DAY 21", "hud", 88, 104)
+add(1, T(305), T(337), "Hud", 510, 412, "~1 DAY PER M³", "~1 DAY PER M³", "hud", 88, 104)
+add(1, T(440), T(475), "Hud", 510, 412, BLU + "3 DAYS" + WHT + " MAX", "3 DAYS MAX", "hud", 88, 104)
 # red ✗ stamps on the wrong choices
 for f0, f1 in ((222, 259), (375, 388)):
     add(3, T(f0), T(f1), "Stamp", 540, 880, "✗", "✗", "label", 420, 420, pop=False,
         extra=r"\fscx160\fscy160\t(0,110,\fscx100\fscy100)\frz-8")
 # end prompt while the question line plays (it loops straight back into the hook)
-add(2, T(617), 22.0, "Top", 510, 300, YEL + "A" + WHT + ", " + YEL + "B" + WHT + " OR " + YEL + "C" + WHT + "?", "A, B OR C?", "overlay", 96, 110)
+add(2, T(617), 22.0, "Top", 510, 300, YEL + "A" + WHT + ", " + YEL + "B" + WHT + ", " + YEL + "C" + WHT + "?", "A, B, C?", "overlay", 96, 110)
 # narration captions (not during the hook shot)
 for m, at in zip(meta, VO_AT):
     words = m["text"].split()

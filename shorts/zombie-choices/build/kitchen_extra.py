@@ -91,7 +91,7 @@ def jug(name, fill=None):
 
 # ---------------------------------------------------------------- hallway Remy only exists in S01/S02
 show_only(remy_root, ((-60, False), (100, True)))
-show_only(z_root, ((-60, False), (100, True)))
+show_only(z_root, ((-60, True), (1, False), (100, True)))   # stays behind the shut door in the loop lead-in
 # door rattles shut against the barricade between the hook and the peak
 for f in range(100, 540):
     a = -math.radians(2.0 * abs(math.sin(f * 1.3))) if f % 23 < 4 else 0.0
@@ -181,7 +181,9 @@ r2_root.rotation_euler.z = math.radians(200)
 show_only(r2_root, ((-60, True), (315, False), (425, True)))
 
 # S10/S11: water jug slams onto the counter, then Remy fills jugs at the sink
-j1, _ = jug("SlamJug")
+j1, w1 = jug("SlamJug", fill=True)
+w1.scale = (1, 1, 0.92)
+w1.location = (0, 0, 0.122)
 for f in range(436, 486):
     u = f - 442
     if u < 0:
@@ -281,7 +283,7 @@ def s06(f):
 
 cam_seq("Cam_S06", 45, range(380, 422), s06, 2.0, focus_h)
 cam_seq("Cam_S10", 35, range(440, 485), lambda f: (
-    Vector((KX + 0.1, -0.35, 0.95)) + Vector((0.6, -1.6, 0.5)) * (1 - 0.8 * sm((f - 440) / 6)), Vector((KX + 0.1, -0.35, 1.05))))
+    Vector((KX + 0.1, -0.35, 0.95)) + Vector((0.6, -1.6, 0.5)) * (1 - 0.45 * sm((f - 440) / 6)), Vector((KX + 0.1, -0.35, 1.05))))
 cam_seq("Cam_S11", 32, range(500, 542), lambda f: (
     Vector((KX + 1.7 - 0.15 * sm((f - 500) / 41), -1.35, 1.45)), Vector((KX + 0.95, -0.4, 1.05))))
 c12 = cam_seq("Cam_S12", 20, range(556, 602), lambda f: (
