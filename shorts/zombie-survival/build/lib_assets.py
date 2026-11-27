@@ -259,3 +259,14 @@ def bake_mix(arm, layers, weight, f0, f1, name="baked"):
             p.keyframe_insert("rotation_quaternion", frame=f)
             p.keyframe_insert("location", frame=f)
     return out
+
+
+def key_hide(ob, pairs):
+    """pairs of (frame, hidden), constant interpolation"""
+    for f, h in pairs:
+        ob.hide_render = h
+        ob.keyframe_insert("hide_render", frame=f)
+    for fc in iter_fcurves(ob.animation_data.action):
+        if fc.data_path == "hide_render":
+            for kp in fc.keyframe_points:
+                kp.interpolation = "CONSTANT"

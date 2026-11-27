@@ -1,0 +1,457 @@
+{
+ "shots": [
+  {
+   "id": "S01",
+   "start": 0.0,
+   "end": 1.3,
+   "type": "LOW",
+   "beat": "hook",
+   "subjects": [
+    [
+     60,
+     520,
+     560,
+     1300
+    ],
+    [
+     430,
+     1000,
+     460,
+     800
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "overlay",
+     "text": "ZOMBIE OUTBREAK",
+     "box": [
+      8,
+      190,
+      1004,
+      120
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S02",
+   "start": 1.3,
+   "end": 3.1,
+   "type": "CU",
+   "beat": "build",
+   "subjects": [
+    [
+     180,
+     760,
+     880,
+     1160
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "ACCORDING TO REAL",
+     "box": [
+      26,
+      1330,
+      969,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S03",
+   "start": 3.1,
+   "end": 5.2,
+   "type": "TOPDOWN",
+   "beat": "build",
+   "subjects": [
+    [
+     0,
+     520,
+     1080,
+     900
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "CORNELL RESEARCHERS",
+     "box": [
+      -31,
+      1330,
+      1083,
+      110
+     ]
+    },
+    {
+     "kind": "hud",
+     "text": "CORNELL SIM",
+     "box": [
+      156,
+      300,
+      709,
+      120
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S04",
+   "start": 5.2,
+   "end": 7.9,
+   "type": "WIDE",
+   "beat": "build",
+   "subjects": [
+    [
+     0,
+     700,
+     1080,
+     700
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "307 MILLION AMERICANS",
+     "box": [
+      -88,
+      1330,
+      1197,
+      110
+     ]
+    },
+    {
+     "kind": "hud",
+     "text": "CORNELL SIM",
+     "box": [
+      156,
+      300,
+      709,
+      120
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S05",
+   "start": 7.9,
+   "end": 9.5,
+   "type": "WIDE",
+   "beat": "build",
+   "subjects": [
+    [
+     60,
+     920,
+     1000,
+     560
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "BIG CITIES FELL",
+     "box": [
+      83,
+      1330,
+      855,
+      110
+     ]
+    },
+    {
+     "kind": "hud",
+     "text": "DAY 3",
+     "box": [
+      349,
+      300,
+      322,
+      120
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S06",
+   "start": 9.5,
+   "end": 10.8,
+   "type": "MEDIUM",
+   "beat": "build",
+   "subjects": [
+    [
+     280,
+     460,
+     520,
+     1150
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "GET OUT",
+     "box": [
+      311,
+      1330,
+      399,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S07",
+   "start": 10.8,
+   "end": 11.9,
+   "type": "ECU",
+   "beat": "build",
+   "subjects": [
+    [
+     0,
+     0,
+     1080,
+     1920
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "DON'T HIDE DOWNTOWN",
+     "box": [
+      -31,
+      1330,
+      1083,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S08",
+   "start": 11.9,
+   "end": 13.4,
+   "type": "ECU",
+   "beat": "build",
+   "subjects": [
+    [
+     60,
+     300,
+     960,
+     1250
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "PACK A GALLON",
+     "box": [
+      140,
+      1330,
+      741,
+      110
+     ]
+    },
+    {
+     "kind": "hud",
+     "text": "1 GALLON/DAY",
+     "box": [
+      124,
+      300,
+      773,
+      120
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S09",
+   "start": 13.4,
+   "end": 15.0,
+   "type": "MCU",
+   "beat": "build",
+   "subjects": [
+    [
+     240,
+     520,
+     520,
+     1250
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "PERSON",
+     "box": [
+      339,
+      1330,
+      342,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S10",
+   "start": 15.0,
+   "end": 16.6,
+   "type": "WIDE",
+   "beat": "build",
+   "subjects": [
+    [
+     0,
+     780,
+     1080,
+     900
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "HEAD FOR THE",
+     "box": [
+      168,
+      1330,
+      684,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S11",
+   "start": 16.6,
+   "end": 17.7,
+   "type": "WIDE",
+   "beat": "build",
+   "subjects": [
+    [
+     600,
+     820,
+     260,
+     640
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "ZOMBIES TOOK MONTHS",
+     "box": [
+      -31,
+      1330,
+      1083,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S12",
+   "start": 17.7,
+   "end": 19.2,
+   "type": "WIDE",
+   "beat": "peak",
+   "subjects": [
+    [
+     0,
+     980,
+     1080,
+     940
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "NORTHERN ROCKIES",
+     "box": [
+      54,
+      1330,
+      912,
+      110
+     ]
+    },
+    {
+     "kind": "hud",
+     "text": "MONTH 4 (EST.)",
+     "box": [
+      59,
+      300,
+      902,
+      120
+     ]
+    },
+    {
+     "kind": "label",
+     "text": "SAFEST",
+     "box": [
+      362,
+      772,
+      297,
+      96
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S13",
+   "start": 19.2,
+   "end": 20.0,
+   "type": "OTS",
+   "beat": "payoff",
+   "subjects": [
+    [
+     0,
+     1000,
+     640,
+     920
+    ]
+   ],
+   "texts": []
+  },
+  {
+   "id": "S14",
+   "start": 20.0,
+   "end": 20.9,
+   "type": "LOW",
+   "beat": "build",
+   "subjects": [
+    [
+     220,
+     520,
+     640,
+     1300
+    ]
+   ],
+   "texts": []
+  },
+  {
+   "id": "S15",
+   "start": 20.9,
+   "end": 22.0,
+   "type": "LOW",
+   "beat": "loop",
+   "subjects": [
+    [
+     60,
+     520,
+     560,
+     1300
+    ]
+   ],
+   "texts": [
+    {
+     "kind": "caption",
+     "text": "LAST LONGEST IN",
+     "box": [
+      83,
+      1330,
+      855,
+      110
+     ]
+    }
+   ]
+  }
+ ],
+ "narration": {
+  "first_word_start": 0.0,
+  "last_word_end": 22.0
+ }
+}
