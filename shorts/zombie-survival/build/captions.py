@@ -95,7 +95,7 @@ def T(f):
 # HUD band
 add(1, T(94), T(238), "Hud", 510, 360, "CORNELL SIM", "CORNELL SIM", "hud", width("CORNELL SIM", 96), 112)
 add(1, T(250), T(286), "Hud", 510, 360, "DAY 3", "DAY 3", "hud", width("DAY 3", 96), 112)
-add(1, T(366), T(403), "Hud", 510, 360, "1 GALLON/DAY", "1 GALLON/DAY", "hud", width("1 GALLON/DAY", 96), 112)
+add(1, T(366), T(403), "Hud", 510, 290, "1 GALLON/DAY", "1 GALLON/DAY", "hud", width("1 GALLON/DAY", 96), 112)
 add(1, T(550), T(577), "Hud", 510, 360, "~MONTH 4", "~MONTH 4", "hud", width("~MONTH 4", 96), 112)
 add(1, T(553), T(577), "Label", 510, 820, "SAFEST", "SAFEST", "label", width("SAFEST", 80), 96)
 open(os.path.join(AUD, "captions.ass"), "w").write(head + "\n".join(ev) + "\n")

@@ -6,7 +6,7 @@ texts = json.load(open(os.path.join(HERE, "..", "audio", "text_events.json")))
 vo = json.load(open(os.path.join(HERE, "..", "audio", "vo.json")))
 at = json.load(open(os.path.join(HERE, "..", "audio", "vo_at.json")))
 S = [  # id, out frames, type, beat, subject boxes [x, y, w, h]: faces / key action, measured on the 1080x1920 QA sheet
-    ("S01", 1, 39, "LOW", "hook", [[60, 280, 500, 760], [330, 900, 450, 560]]),
+    ("S01", 1, 39, "LOW", "hook", [[60, 380, 500, 660], [330, 900, 450, 560]]),
     ("S02", 40, 93, "CU", "build", [[300, 480, 560, 700]]),
     ("S03", 94, 153, "TOPDOWN", "build", [[0, 560, 1080, 660]]),
     ("S04", 154, 196, "WIDE", "build", [[0, 640, 1080, 580]]),
@@ -14,7 +14,7 @@ S = [  # id, out frames, type, beat, subject boxes [x, y, w, h]: faces / key act
     ("S06", 238, 285, "WIDE", "build", [[40, 760, 1000, 480]]),
     ("S07", 286, 324, "MEDIUM", "build", [[300, 280, 450, 940]]),
     ("S08", 325, 357, "ECU", "build", [[150, 240, 780, 1000]]),
-    ("S09", 358, 402, "ECU", "build", [[150, 300, 780, 900]]),
+    ("S09", 358, 402, "ECU", "build", [[150, 420, 780, 520]]),
     ("S10", 403, 450, "MCU", "build", [[300, 500, 420, 740]]),
     ("S11", 451, 498, "WIDE", "build", [[0, 480, 1080, 740]]),
     ("S12", 499, 531, "WIDE", "build", [[480, 760, 260, 470]]),

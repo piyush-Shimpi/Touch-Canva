@@ -1,0 +1,189 @@
+{
+  "checks": [
+    {
+      "check": "size 1080x1920",
+      "ok": true,
+      "detail": "1080x1920"
+    },
+    {
+      "check": "fps 30",
+      "ok": true,
+      "detail": "30.0"
+    },
+    {
+      "check": "duration 20-22s (max 24)",
+      "ok": true,
+      "detail": "22.00s"
+    },
+    {
+      "check": "pix_fmt yuv420p",
+      "ok": true,
+      "detail": "yuv420p"
+    },
+    {
+      "check": "audio present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "loudness -15..-13 LUFS",
+      "ok": true,
+      "detail": "-14.71 LUFS"
+    },
+    {
+      "check": "true peak < -1 dBTP",
+      "ok": true,
+      "detail": "-1.4 dBTP"
+    },
+    {
+      "check": "sound at frame 0 and at the end (> -40 dB)",
+      "ok": true,
+      "detail": "start -13 dB, end -32 dB"
+    },
+    {
+      "check": "audio loop pause < 0.1s",
+      "ok": true,
+      "detail": "0.00s"
+    },
+    {
+      "check": "first shot starts at 0.0 and <= 1.5s (hook)",
+      "ok": true,
+      "detail": "1.30s"
+    },
+    {
+      "check": "no shot > 2.0s",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "shot count 10-16",
+      "ok": true,
+      "detail": "16"
+    },
+    {
+      "check": "hook shows one text element",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "check": "peak at 70-80%",
+      "ok": true,
+      "detail": "80%"
+    },
+    {
+      "check": "layout: no tiny/cropped/overlapping",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "bright scenes (mean luma >= 75)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "loop: last frame ~ first frame (diff < 18)",
+      "ok": true,
+      "detail": "14.8"
+    }
+  ],
+  "shots": [
+    {
+      "id": "S01",
+      "issues": []
+    },
+    {
+      "id": "S02",
+      "issues": []
+    },
+    {
+      "id": "S03",
+      "issues": []
+    },
+    {
+      "id": "S04",
+      "issues": []
+    },
+    {
+      "id": "S05",
+      "issues": []
+    },
+    {
+      "id": "S06",
+      "issues": []
+    },
+    {
+      "id": "S07",
+      "issues": []
+    },
+    {
+      "id": "S08",
+      "issues": []
+    },
+    {
+      "id": "S09",
+      "issues": []
+    },
+    {
+      "id": "S10",
+      "issues": []
+    },
+    {
+      "id": "S11",
+      "issues": []
+    },
+    {
+      "id": "S12",
+      "issues": []
+    },
+    {
+      "id": "S13",
+      "issues": []
+    },
+    {
+      "id": "S14",
+      "issues": []
+    },
+    {
+      "id": "S15",
+      "issues": []
+    },
+    {
+      "id": "S16",
+      "issues": []
+    }
+  ],
+  "onscreen_words": [
+    "A",
+    "ACROSS",
+    "AMERICANS",
+    "BIG",
+    "CITIES",
+    "CORNELL",
+    "DAY",
+    "DOWNTOWN",
+    "FELL",
+    "FOR",
+    "GALLON",
+    "GALLON/DAY",
+    "GET",
+    "HEAD",
+    "IN",
+    "LONGEST",
+    "NORTHERN",
+    "OUT",
+    "OUTBREAK",
+    "PACK",
+    "PERSON",
+    "REAL",
+    "RESEARCHERS",
+    "SAFEST",
+    "SCIENTISTS",
+    "SIM",
+    "THE",
+    "TOOK",
+    "ZOMBIE",
+    "ZOMBIES",
+    "~MONTH"
+  ],
+  "pass": true
+}
