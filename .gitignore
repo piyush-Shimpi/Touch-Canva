@@ -30,3 +30,7 @@ shorts/zombie-choices/build/*.log
 shorts/zombie-choices/output/*.tmp.mp4
 shorts/zombie-choices/qa/
 shorts/zombie-choices/output/final.mp4
+shorts/*/audio/*.wav
+shorts/*/qa/
+shorts/*/output/*.tmp.mp4
+shorts/zombie-hideout/output/final.mp4

@@ -1,0 +1,68 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Top,Inter Display Black,96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,2,0,1,11,5,5,40,40,0,1
+Style: Cap,Inter Display Black,84,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,0,0,1,9,4,5,60,60,0,1
+Style: Choice,Inter Display Black,72,&H00FFFFFF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,1,0,1,9,4,5,40,40,0,1
+Style: Hud,Inter Display Black,88,&H0000D4FF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,1,0,1,10,5,5,40,40,0,1
+Style: Label,Inter Display Black,70,&H00101010,&H00FFFFFF,&H0000D4FF,&H0000D4FF,-1,0,0,0,100,100,1,0,3,14,0,5,40,40,0,1
+Style: Burst,Inter Display Black,130,&H0000E1FF,&H00FFFFFF,&H00101010,&H80000000,-1,0,0,0,100,100,2,0,1,12,6,5,40,40,0,1
+Style: Stamp,Inter Display Black,420,&H002A2AFF,&H00FFFFFF,&H00FFFFFF,&H80000000,-1,0,0,0,100,100,0,0,1,14,0,5,40,40,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 2,0:00:00.00,0:00:01.50,Top,,0,0,0,,{\pos(510,300)}HIDE {\c&H00D4FF&}HERE?
+Dialogue: 1,0:00:05.00,0:00:06.83,Label,,0,0,0,,{\pos(510,400)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}NOISE SHIELD
+Dialogue: 1,0:00:08.73,0:00:10.33,Label,,0,0,0,,{\pos(510,400)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}DRY ROOM
+Dialogue: 1,0:00:10.33,0:00:13.47,Label,,0,0,0,,{\pos(510,400)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}NO TRACKS
+Dialogue: 1,0:00:13.47,0:00:16.33,Label,,0,0,0,,{\pos(510,400)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}SCENT WASHED
+Dialogue: 1,0:00:16.33,0:00:19.67,Label,,0,0,0,,{\pos(510,400)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}SMOKE TRAP
+Dialogue: 1,0:00:19.67,0:00:21.83,Label,,0,0,0,,{\pos(510,400)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}GLOW HIDDEN
+Dialogue: 3,0:00:07.37,0:00:08.30,Burst,,0,0,0,,{\pos(640,760)\fscx150\fscy150\t(0,120,\fscx100\fscy100)\frz-10}BRRR!
+Dialogue: 3,0:00:22.97,0:00:23.70,Burst,,0,0,0,,{\pos(380,620)\fscx150\fscy150\t(0,120,\fscx100\fscy100)\frz8}RAAWR!
+Dialogue: 2,0:00:25.20,0:00:28.50,Top,,0,0,0,,{\pos(510,300)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}PART {\c&H00D4FF&}4?
+Dialogue: 0,0:00:01.51,0:00:02.16,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}SO YOU HIDE
+Dialogue: 0,0:00:02.16,0:00:02.64,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}BEHIND A
+Dialogue: 0,0:00:02.64,0:00:03.48,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}WATERFALL.{\c&HFFFFFF&}
+Dialogue: 0,0:00:03.53,0:00:04.20,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THEY HUNT BY
+Dialogue: 0,0:00:04.20,0:00:04.69,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}SOUND,{\c&HFFFFFF&}
+Dialogue: 0,0:00:04.69,0:00:05.36,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}BUT THE {\c&H00D4FF&}ROAR{\c&HFFFFFF&}
+Dialogue: 0,0:00:05.36,0:00:05.90,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}DROWNS OUT
+Dialogue: 0,0:00:05.90,0:00:06.84,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}EVERY NOISE.
+Dialogue: 0,0:00:06.98,0:00:07.51,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THE WATER'S
+Dialogue: 0,0:00:07.51,0:00:08.12,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}FREEZING,{\c&HFFFFFF&}
+Dialogue: 0,0:00:08.12,0:00:08.68,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}SO YOU {\c&H00D4FF&}DIG{\c&HFFFFFF&}
+Dialogue: 0,0:00:08.68,0:00:09.25,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}A DRY ROOM
+Dialogue: 0,0:00:09.25,0:00:10.29,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}INTO THE ROCK.
+Dialogue: 0,0:00:10.38,0:00:10.94,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THEY FOLLOW
+Dialogue: 0,0:00:10.94,0:00:11.63,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}FOOTPRINTS,{\c&HFFFFFF&}
+Dialogue: 0,0:00:11.63,0:00:12.23,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}SO YOU ONLY
+Dialogue: 0,0:00:12.23,0:00:12.84,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}WALK IN THE
+Dialogue: 0,0:00:12.84,0:00:13.51,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}STREAM.{\c&HFFFFFF&}
+Dialogue: 0,0:00:13.58,0:00:14.41,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THEY {\c&H00D4FF&}SMELL{\c&HFFFFFF&} YOU,
+Dialogue: 0,0:00:14.41,0:00:15.01,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}BUT THE FALLS
+Dialogue: 0,0:00:15.01,0:00:15.45,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}WASH YOUR
+Dialogue: 0,0:00:15.45,0:00:16.24,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}SCENT{\c&HFFFFFF&} AWAY.
+Dialogue: 0,0:00:16.33,0:00:17.08,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}YOUR FIRE MAKES
+Dialogue: 0,0:00:17.08,0:00:17.55,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}SMOKE,{\c&HFFFFFF&}
+Dialogue: 0,0:00:17.55,0:00:18.15,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}SO YOU VENT
+Dialogue: 0,0:00:18.15,0:00:18.74,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}IT INTO THE
+Dialogue: 0,0:00:18.74,0:00:19.72,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}FALLING WATER.
+Dialogue: 0,0:00:19.83,0:00:20.35,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}AT NIGHT,
+Dialogue: 0,0:00:20.35,0:00:20.97,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THE WATER HIDES
+Dialogue: 0,0:00:20.97,0:00:21.63,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THE {\c&H00D4FF&}GLOW.{\c&HFFFFFF&}
+Dialogue: 0,0:00:21.78,0:00:22.38,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}THEN THE {\c&H00D4FF&}HORDE{\c&HFFFFFF&}
+Dialogue: 0,0:00:22.38,0:00:22.84,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}REACHES THE
+Dialogue: 0,0:00:22.84,0:00:23.36,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}POOL,
+Dialogue: 0,0:00:23.93,0:00:24.63,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}AND WALKS RIGHT
+Dialogue: 0,0:00:24.63,0:00:25.18,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}PAST.{\c&HFFFFFF&}
+Dialogue: 0,0:00:25.38,0:00:25.91,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}BUT {\c&H00D4FF&}SUMMER'S{\c&HFFFFFF&}
+Dialogue: 0,0:00:25.91,0:00:26.41,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}COMING,
+Dialogue: 0,0:00:26.41,0:00:26.79,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}AND THE
+Dialogue: 0,0:00:26.79,0:00:27.36,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}WATERFALL IS
+Dialogue: 0,0:00:27.36,0:00:28.12,Cap,,0,0,0,,{\pos(510,1385)}{\fscx70\fscy70\t(0,90,\fscx108\fscy108)\t(90,160,\fscx100\fscy100)}{\c&H00D4FF&}SHRINKING.{\c&HFFFFFF&}
